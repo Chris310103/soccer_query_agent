@@ -1,0 +1,6 @@
+# Soccer Analyst Agent
+
+LLM-controller + tool layer for querying a soccer database (NL→SQL), with baseline and evaluation.
+
+## Quickstart
+- TBD
