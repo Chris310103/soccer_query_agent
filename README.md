@@ -111,55 +111,51 @@ Real Sociedad home wins in LaLiga 2023-24
 ### 1. Run benchmark
 ```bash
 python run_benchmark.py
+```
 
-2. Output files
-
-Results will be saved to:
-
-benchmark_outputs/
+### 2. Output files
+Results will be saved to: `benchmark_outputs/`
 
 Including:
+- `benchmark_summary.json`
+- `benchmark_detailed.json`
+- `benchmark_detailed.csv`
 
-benchmark_summary.json
-benchmark_detailed.json
-benchmark_detailed.csv
+### 📂 Project Structure
 
-
-
-📂 Project Structure
-
+```text
 soccer_agent/
 │
 ├── tools/
 │   ├── resolver.py
 │   ├── sql_executor.py
-│   ├── result_validator.py
+│   └── result_validator.py
 │
 ├── controller.py
 ├── query_parser.py
 ├── weak_baseline.py
 │
-├── eval/
-│   ├── run_benchmark.py
-│   ├── benchmark_cases.py
-│   └── benchmark_outputs/
+└── eval/
+    ├── run_benchmark.py
+    ├── benchmark_cases.py
+    └── benchmark_outputs/
+```
 
 
-⚠️ Current Limitations
+### ⚠️ Current Limitations
 
 - Parser is rule-based (LLM integration planned)
 - Limited query types
 - Validator does not yet perform automatic repair
 - Benchmark size is still small
 
-🔮 Next Steps
+### 🔮 Next Steps
 
 - Replace rule-based parser with LLM-based parser
 - Expand query coverage and benchmark dataset
 - Implement automatic repair / relax loops
 - Improve handling of complex queries
 
-🧩 Summary
-
+### 🧩 Summary
 This project demonstrates that a structured pipeline with entity resolution and validation can outperform a weak baseline in both correctness and robustness, while also providing more interpretable failure handling.
 
