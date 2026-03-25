@@ -141,19 +141,20 @@ soccer_agent/
 │   ├── benchmark_cases.py
 │   └── benchmark_outputs/
 
+
 ⚠️ Current Limitations
 
-Parser is rule-based (LLM integration planned)
-Limited query types
-Validator does not yet perform automatic repair
-Benchmark size is still small
+- Parser is rule-based (LLM integration planned)
+- Limited query types
+- Validator does not yet perform automatic repair
+- Benchmark size is still small
 
 🔮 Next Steps
 
-Replace rule-based parser with LLM-based parser
-Expand query coverage and benchmark dataset
-Implement automatic repair / relax loops
-Improve handling of complex queries
+- Replace rule-based parser with LLM-based parser
+- Expand query coverage and benchmark dataset
+- Implement automatic repair / relax loops
+- Improve handling of complex queries
 
 🧩 Summary
 
