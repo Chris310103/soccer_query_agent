@@ -1,0 +1,61 @@
+{
+  "total_cases": 16,
+  "gold_cases": 4,
+  "baseline": {
+    "success_rate_num": 10,
+    "success_rate_den": 16,
+    "success_rate": 0.625,
+    "expected_status_match_num": 14,
+    "expected_status_match_den": 16,
+    "expected_status_match": 0.875,
+    "correct_num": 2,
+    "correct_den": 4,
+    "correctness": 0.5
+  },
+  "full_system": {
+    "success_rate_num": 12,
+    "success_rate_den": 16,
+    "success_rate": 0.75,
+    "expected_status_match_num": 16,
+    "expected_status_match_den": 16,
+    "expected_status_match": 1.0,
+    "correct_num": 4,
+    "correct_den": 4,
+    "correctness": 1.0
+  },
+  "confidence_summary": {
+    "avg_comp_confidence": 0.86875,
+    "avg_team_confidence": 0.79375
+  },
+  "category_distribution": {
+    "single_season_count": 1,
+    "merged_team_home_wins": 1,
+    "merged_team_away_wins": 1,
+    "fake_team": 1,
+    "missing_season": 1,
+    "missing_league": 1,
+    "multi_season": 1,
+    "merged_team_match_count": 1,
+    "single_team_away_wins": 1,
+    "single_season_count_variant": 1,
+    "merged_team_away_wins_extra": 1,
+    "merged_team_match_count_extra": 1,
+    "multi_season_epl": 1,
+    "missing_season_laliga": 1,
+    "goals_scored_single_team": 1,
+    "goals_scored_merged_team": 1
+  },
+  "baseline_step_breakdown": {
+    "done": 10,
+    "resolve_team": 1,
+    "resolve_competition": 5
+  },
+  "full_step_breakdown": {
+    "done": 12,
+    "validate": 4
+  },
+  "validator_decision_breakdown": {
+    "OK": 12,
+    "CLARIFY": 4
+  }
+}

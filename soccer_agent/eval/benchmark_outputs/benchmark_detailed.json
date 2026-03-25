@@ -1,0 +1,3683 @@
+[
+  {
+    "id": "c1",
+    "category": "single_season_count",
+    "query": "In EPL 2021-22, how many matches did Manchester City play?",
+    "expected_status": "success",
+    "gold_count": 38,
+    "baseline_status": "success",
+    "baseline_step": "done",
+    "baseline_value": 38,
+    "baseline_correct": true,
+    "full_status": "success",
+    "full_step": "done",
+    "full_value": 38,
+    "full_correct": true,
+    "comp_confidence": 1.0,
+    "team_confidence": 0.95,
+    "validator_decision": "OK",
+    "sql_spec": {
+      "competition_mention": {
+        "abb": "epl",
+        "league_name": null
+      },
+      "competition_context": {
+        "league": "en",
+        "seasons": [
+          "2021-22"
+        ]
+      },
+      "team_mention": {
+        "team_name": "manchester city"
+      },
+      "team_context": {
+        "league": "en"
+      },
+      "query_type": "match_count"
+    },
+    "baseline_result": {
+      "mode": "weak_baseline_single_pass",
+      "query": "In EPL 2021-22, how many matches did Manchester City play?",
+      "status": "success",
+      "step": "done",
+      "message": "Weak baseline query executed successfully",
+      "sql_spec": {
+        "competition_mention": {
+          "abb": "epl",
+          "league_name": null
+        },
+        "competition_context": {
+          "league": "en",
+          "seasons": [
+            "2021-22"
+          ]
+        },
+        "team_mention": {
+          "team_name": "manchester city"
+        },
+        "team_context": {
+          "league": "en"
+        },
+        "query_type": "match_count"
+      },
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "RESOLVED",
+        "value": [
+          3
+        ],
+        "debug": {
+          "mode": "weak_baseline"
+        }
+      },
+      "team_result": {
+        "entity_type": "team",
+        "decision": "RESOLVED",
+        "value": [
+          4
+        ],
+        "debug": {
+          "mode": "weak_baseline"
+        }
+      },
+      "sql": "\n            SELECT COUNT(*)\n            FROM matches\n            WHERE comp_id IN (?)\n              AND (\n                    home_team_id IN (?)\n                    OR\n                    away_team_id IN (?)\n              )\n        ",
+      "params": [
+        3,
+        4,
+        4
+      ],
+      "execution_result": {
+        "status": "success",
+        "columns": [
+          "COUNT(*)"
+        ],
+        "rows": [
+          [
+            38
+          ]
+        ],
+        "row_count": 1,
+        "error": null
+      }
+    },
+    "full_result": {
+      "status": "success",
+      "step": "done",
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "RESOLVED",
+        "confidence": 1.0,
+        "value": [
+          3
+        ],
+        "debug": {
+          "mention": {
+            "abb": "epl",
+            "league_name": null
+          },
+          "context": {
+            "league": "en",
+            "seasons": [
+              "2021-22"
+            ]
+          }
+        }
+      },
+      "team_result": {
+        "entity_type": "team",
+        "decision": "RESOLVED",
+        "confidence": 0.95,
+        "value": [
+          4
+        ],
+        "debug": {
+          "mention": {
+            "team_name": "manchester city"
+          },
+          "context": {
+            "league": "en"
+          }
+        }
+      },
+      "sql": "\n            SELECT COUNT(*)\n            FROM matches\n            WHERE comp_id IN (?)\n              AND (\n                    home_team_id IN (?)\n                    OR\n                    away_team_id IN (?)\n              )\n        ",
+      "params": [
+        3,
+        4,
+        4
+      ],
+      "execution_result": {
+        "status": "success",
+        "columns": [
+          "COUNT(*)"
+        ],
+        "rows": [
+          [
+            38
+          ]
+        ],
+        "row_count": 1,
+        "error": null
+      },
+      "validator_result": {
+        "decision": "OK",
+        "reason": "Query executed successfully and returned expected result shape.",
+        "suggestion": null,
+        "debug": {
+          "query_spec": {
+            "competition_mention": {
+              "abb": "epl",
+              "league_name": null
+            },
+            "competition_context": {
+              "league": "en",
+              "seasons": [
+                "2021-22"
+              ]
+            },
+            "team_mention": {
+              "team_name": "manchester city"
+            },
+            "team_context": {
+              "league": "en"
+            },
+            "query_type": "match_count"
+          },
+          "competition_result": {
+            "entity_type": "competition",
+            "decision": "RESOLVED",
+            "confidence": 1.0,
+            "value": [
+              3
+            ],
+            "debug": {
+              "mention": {
+                "abb": "epl",
+                "league_name": null
+              },
+              "context": {
+                "league": "en",
+                "seasons": [
+                  "2021-22"
+                ]
+              }
+            }
+          },
+          "team_result": {
+            "entity_type": "team",
+            "decision": "RESOLVED",
+            "confidence": 0.95,
+            "value": [
+              4
+            ],
+            "debug": {
+              "mention": {
+                "team_name": "manchester city"
+              },
+              "context": {
+                "league": "en"
+              }
+            }
+          },
+          "sql": "\n            SELECT COUNT(*)\n            FROM matches\n            WHERE comp_id IN (?)\n              AND (\n                    home_team_id IN (?)\n                    OR\n                    away_team_id IN (?)\n              )\n        ",
+          "params": [
+            3,
+            4,
+            4
+          ],
+          "execution_result": {
+            "status": "success",
+            "columns": [
+              "COUNT(*)"
+            ],
+            "rows": [
+              [
+                38
+              ]
+            ],
+            "row_count": 1,
+            "error": null
+          },
+          "build_error": null
+        }
+      },
+      "message": "Query executed successfully",
+      "query_type": "match_count"
+    }
+  },
+  {
+    "id": "c2",
+    "category": "merged_team_home_wins",
+    "query": "Real Sociedad home wins in LaLiga 2023-24",
+    "expected_status": "success",
+    "gold_count": 8,
+    "baseline_status": "success",
+    "baseline_step": "done",
+    "baseline_value": 0,
+    "baseline_correct": false,
+    "full_status": "success",
+    "full_step": "done",
+    "full_value": 8,
+    "full_correct": true,
+    "comp_confidence": 1.0,
+    "team_confidence": 0.85,
+    "validator_decision": "OK",
+    "sql_spec": {
+      "competition_mention": {
+        "abb": "laliga",
+        "league_name": null
+      },
+      "competition_context": {
+        "league": "es",
+        "seasons": [
+          "2023-24"
+        ]
+      },
+      "team_mention": {
+        "team_name": "real sociedad"
+      },
+      "team_context": {
+        "league": "es"
+      },
+      "query_type": "home_wins"
+    },
+    "baseline_result": {
+      "mode": "weak_baseline_single_pass",
+      "query": "Real Sociedad home wins in LaLiga 2023-24",
+      "status": "success",
+      "step": "done",
+      "message": "Weak baseline query executed successfully",
+      "sql_spec": {
+        "competition_mention": {
+          "abb": "laliga",
+          "league_name": null
+        },
+        "competition_context": {
+          "league": "es",
+          "seasons": [
+            "2023-24"
+          ]
+        },
+        "team_mention": {
+          "team_name": "real sociedad"
+        },
+        "team_context": {
+          "league": "es"
+        },
+        "query_type": "home_wins"
+      },
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "RESOLVED",
+        "value": [
+          11
+        ],
+        "debug": {
+          "mode": "weak_baseline"
+        }
+      },
+      "team_result": {
+        "entity_type": "team",
+        "decision": "RESOLVED",
+        "value": [
+          33
+        ],
+        "debug": {
+          "mode": "weak_baseline"
+        }
+      },
+      "sql": "\n            SELECT COUNT(*)\n            FROM matches\n            WHERE comp_id IN (?)\n              AND home_team_id IN (?)\n              AND home_goals > away_goals\n        ",
+      "params": [
+        11,
+        33
+      ],
+      "execution_result": {
+        "status": "success",
+        "columns": [
+          "COUNT(*)"
+        ],
+        "rows": [
+          [
+            0
+          ]
+        ],
+        "row_count": 1,
+        "error": null
+      }
+    },
+    "full_result": {
+      "status": "success",
+      "step": "done",
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "RESOLVED",
+        "confidence": 1.0,
+        "value": [
+          11
+        ],
+        "debug": {
+          "mention": {
+            "abb": "laliga",
+            "league_name": null
+          },
+          "context": {
+            "league": "es",
+            "seasons": [
+              "2023-24"
+            ]
+          }
+        }
+      },
+      "team_result": {
+        "entity_type": "team",
+        "decision": "RESOLVED",
+        "confidence": 0.85,
+        "value": [
+          33,
+          52
+        ],
+        "debug": {
+          "mention": {
+            "team_name": "real sociedad"
+          },
+          "context": {
+            "league": "es"
+          }
+        }
+      },
+      "sql": "\n            SELECT COUNT(*)\n            FROM matches\n            WHERE comp_id IN (?)\n              AND home_team_id IN (?,?)\n              AND home_goals > away_goals\n        ",
+      "params": [
+        11,
+        33,
+        52
+      ],
+      "execution_result": {
+        "status": "success",
+        "columns": [
+          "COUNT(*)"
+        ],
+        "rows": [
+          [
+            8
+          ]
+        ],
+        "row_count": 1,
+        "error": null
+      },
+      "validator_result": {
+        "decision": "OK",
+        "reason": "Query executed successfully and returned expected result shape.",
+        "suggestion": null,
+        "debug": {
+          "query_spec": {
+            "competition_mention": {
+              "abb": "laliga",
+              "league_name": null
+            },
+            "competition_context": {
+              "league": "es",
+              "seasons": [
+                "2023-24"
+              ]
+            },
+            "team_mention": {
+              "team_name": "real sociedad"
+            },
+            "team_context": {
+              "league": "es"
+            },
+            "query_type": "home_wins"
+          },
+          "competition_result": {
+            "entity_type": "competition",
+            "decision": "RESOLVED",
+            "confidence": 1.0,
+            "value": [
+              11
+            ],
+            "debug": {
+              "mention": {
+                "abb": "laliga",
+                "league_name": null
+              },
+              "context": {
+                "league": "es",
+                "seasons": [
+                  "2023-24"
+                ]
+              }
+            }
+          },
+          "team_result": {
+            "entity_type": "team",
+            "decision": "RESOLVED",
+            "confidence": 0.85,
+            "value": [
+              33,
+              52
+            ],
+            "debug": {
+              "mention": {
+                "team_name": "real sociedad"
+              },
+              "context": {
+                "league": "es"
+              }
+            }
+          },
+          "sql": "\n            SELECT COUNT(*)\n            FROM matches\n            WHERE comp_id IN (?)\n              AND home_team_id IN (?,?)\n              AND home_goals > away_goals\n        ",
+          "params": [
+            11,
+            33,
+            52
+          ],
+          "execution_result": {
+            "status": "success",
+            "columns": [
+              "COUNT(*)"
+            ],
+            "rows": [
+              [
+                8
+              ]
+            ],
+            "row_count": 1,
+            "error": null
+          },
+          "build_error": null
+        }
+      },
+      "message": "Query executed successfully",
+      "query_type": "home_wins"
+    }
+  },
+  {
+    "id": "c3",
+    "category": "merged_team_away_wins",
+    "query": "Atletico Madrid away wins in LaLiga 2023-24",
+    "expected_status": "success",
+    "gold_count": 8,
+    "baseline_status": "success",
+    "baseline_step": "done",
+    "baseline_value": 0,
+    "baseline_correct": false,
+    "full_status": "success",
+    "full_step": "done",
+    "full_value": 8,
+    "full_correct": true,
+    "comp_confidence": 1.0,
+    "team_confidence": 0.85,
+    "validator_decision": "OK",
+    "sql_spec": {
+      "competition_mention": {
+        "abb": "laliga",
+        "league_name": null
+      },
+      "competition_context": {
+        "league": "es",
+        "seasons": [
+          "2023-24"
+        ]
+      },
+      "team_mention": {
+        "team_name": "atletico madrid"
+      },
+      "team_context": {
+        "league": "es"
+      },
+      "query_type": "away_wins"
+    },
+    "baseline_result": {
+      "mode": "weak_baseline_single_pass",
+      "query": "Atletico Madrid away wins in LaLiga 2023-24",
+      "status": "success",
+      "step": "done",
+      "message": "Weak baseline query executed successfully",
+      "sql_spec": {
+        "competition_mention": {
+          "abb": "laliga",
+          "league_name": null
+        },
+        "competition_context": {
+          "league": "es",
+          "seasons": [
+            "2023-24"
+          ]
+        },
+        "team_mention": {
+          "team_name": "atletico madrid"
+        },
+        "team_context": {
+          "league": "es"
+        },
+        "query_type": "away_wins"
+      },
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "RESOLVED",
+        "value": [
+          11
+        ],
+        "debug": {
+          "mode": "weak_baseline"
+        }
+      },
+      "team_result": {
+        "entity_type": "team",
+        "decision": "RESOLVED",
+        "value": [
+          46
+        ],
+        "debug": {
+          "mode": "weak_baseline"
+        }
+      },
+      "sql": "\n            SELECT COUNT(*)\n            FROM matches\n            WHERE comp_id IN (?)\n              AND away_team_id IN (?)\n              AND away_goals > home_goals\n        ",
+      "params": [
+        11,
+        46
+      ],
+      "execution_result": {
+        "status": "success",
+        "columns": [
+          "COUNT(*)"
+        ],
+        "rows": [
+          [
+            0
+          ]
+        ],
+        "row_count": 1,
+        "error": null
+      }
+    },
+    "full_result": {
+      "status": "success",
+      "step": "done",
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "RESOLVED",
+        "confidence": 1.0,
+        "value": [
+          11
+        ],
+        "debug": {
+          "mention": {
+            "abb": "laliga",
+            "league_name": null
+          },
+          "context": {
+            "league": "es",
+            "seasons": [
+              "2023-24"
+            ]
+          }
+        }
+      },
+      "team_result": {
+        "entity_type": "team",
+        "decision": "RESOLVED",
+        "confidence": 0.85,
+        "value": [
+          46,
+          55
+        ],
+        "debug": {
+          "mention": {
+            "team_name": "atletico madrid"
+          },
+          "context": {
+            "league": "es"
+          }
+        }
+      },
+      "sql": "\n            SELECT COUNT(*)\n            FROM matches\n            WHERE comp_id IN (?)\n              AND away_team_id IN (?,?)\n              AND away_goals > home_goals\n        ",
+      "params": [
+        11,
+        46,
+        55
+      ],
+      "execution_result": {
+        "status": "success",
+        "columns": [
+          "COUNT(*)"
+        ],
+        "rows": [
+          [
+            8
+          ]
+        ],
+        "row_count": 1,
+        "error": null
+      },
+      "validator_result": {
+        "decision": "OK",
+        "reason": "Query executed successfully and returned expected result shape.",
+        "suggestion": null,
+        "debug": {
+          "query_spec": {
+            "competition_mention": {
+              "abb": "laliga",
+              "league_name": null
+            },
+            "competition_context": {
+              "league": "es",
+              "seasons": [
+                "2023-24"
+              ]
+            },
+            "team_mention": {
+              "team_name": "atletico madrid"
+            },
+            "team_context": {
+              "league": "es"
+            },
+            "query_type": "away_wins"
+          },
+          "competition_result": {
+            "entity_type": "competition",
+            "decision": "RESOLVED",
+            "confidence": 1.0,
+            "value": [
+              11
+            ],
+            "debug": {
+              "mention": {
+                "abb": "laliga",
+                "league_name": null
+              },
+              "context": {
+                "league": "es",
+                "seasons": [
+                  "2023-24"
+                ]
+              }
+            }
+          },
+          "team_result": {
+            "entity_type": "team",
+            "decision": "RESOLVED",
+            "confidence": 0.85,
+            "value": [
+              46,
+              55
+            ],
+            "debug": {
+              "mention": {
+                "team_name": "atletico madrid"
+              },
+              "context": {
+                "league": "es"
+              }
+            }
+          },
+          "sql": "\n            SELECT COUNT(*)\n            FROM matches\n            WHERE comp_id IN (?)\n              AND away_team_id IN (?,?)\n              AND away_goals > home_goals\n        ",
+          "params": [
+            11,
+            46,
+            55
+          ],
+          "execution_result": {
+            "status": "success",
+            "columns": [
+              "COUNT(*)"
+            ],
+            "rows": [
+              [
+                8
+              ]
+            ],
+            "row_count": 1,
+            "error": null
+          },
+          "build_error": null
+        }
+      },
+      "message": "Query executed successfully",
+      "query_type": "away_wins"
+    }
+  },
+  {
+    "id": "c4",
+    "category": "fake_team",
+    "query": "Fake Team FC home wins in EPL 2021-22",
+    "expected_status": "error",
+    "gold_count": null,
+    "baseline_status": "error",
+    "baseline_step": "resolve_team",
+    "baseline_value": null,
+    "baseline_correct": null,
+    "full_status": "error",
+    "full_step": "validate",
+    "full_value": null,
+    "full_correct": null,
+    "comp_confidence": 1.0,
+    "team_confidence": 0.0,
+    "validator_decision": "CLARIFY",
+    "sql_spec": {
+      "competition_mention": {
+        "abb": "epl",
+        "league_name": null
+      },
+      "competition_context": {
+        "league": "en",
+        "seasons": [
+          "2021-22"
+        ]
+      },
+      "team_mention": {
+        "team_name": null
+      },
+      "team_context": {
+        "league": "en"
+      },
+      "query_type": "home_wins"
+    },
+    "baseline_result": {
+      "mode": "weak_baseline_single_pass",
+      "query": "Fake Team FC home wins in EPL 2021-22",
+      "status": "error",
+      "step": "resolve_team",
+      "message": "Team resolution failed in weak baseline",
+      "sql_spec": {
+        "competition_mention": {
+          "abb": "epl",
+          "league_name": null
+        },
+        "competition_context": {
+          "league": "en",
+          "seasons": [
+            "2021-22"
+          ]
+        },
+        "team_mention": {
+          "team_name": null
+        },
+        "team_context": {
+          "league": "en"
+        },
+        "query_type": "home_wins"
+      },
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "RESOLVED",
+        "value": [
+          3
+        ],
+        "debug": {
+          "mode": "weak_baseline"
+        }
+      },
+      "team_result": {
+        "entity_type": "team",
+        "decision": "NOT_FOUND",
+        "value": null,
+        "debug": {
+          "mode": "weak_baseline"
+        }
+      },
+      "sql": null,
+      "params": null,
+      "execution_result": null
+    },
+    "full_result": {
+      "status": "error",
+      "step": "validate",
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "RESOLVED",
+        "confidence": 1.0,
+        "value": [
+          3
+        ],
+        "debug": {
+          "mention": {
+            "abb": "epl",
+            "league_name": null
+          },
+          "context": {
+            "league": "en",
+            "seasons": [
+              "2021-22"
+            ]
+          }
+        }
+      },
+      "team_result": {
+        "entity_type": "team",
+        "decision": "NOT_FOUND",
+        "confidence": 0.0,
+        "value": null,
+        "debug": {
+          "mention": {
+            "team_name": null
+          },
+          "context": {
+            "league": "en"
+          }
+        }
+      },
+      "sql": null,
+      "params": null,
+      "execution_result": null,
+      "validator_result": {
+        "decision": "CLARIFY",
+        "reason": "Team is not fully resolved.",
+        "suggestion": "Provide clearer team or league information.",
+        "debug": {
+          "query_spec": {
+            "competition_mention": {
+              "abb": "epl",
+              "league_name": null
+            },
+            "competition_context": {
+              "league": "en",
+              "seasons": [
+                "2021-22"
+              ]
+            },
+            "team_mention": {
+              "team_name": null
+            },
+            "team_context": {
+              "league": "en"
+            },
+            "query_type": "home_wins"
+          },
+          "competition_result": {
+            "entity_type": "competition",
+            "decision": "RESOLVED",
+            "confidence": 1.0,
+            "value": [
+              3
+            ],
+            "debug": {
+              "mention": {
+                "abb": "epl",
+                "league_name": null
+              },
+              "context": {
+                "league": "en",
+                "seasons": [
+                  "2021-22"
+                ]
+              }
+            }
+          },
+          "team_result": {
+            "entity_type": "team",
+            "decision": "NOT_FOUND",
+            "confidence": 0.0,
+            "value": null,
+            "debug": {
+              "mention": {
+                "team_name": null
+              },
+              "context": {
+                "league": "en"
+              }
+            }
+          },
+          "sql": null,
+          "params": null,
+          "execution_result": null,
+          "build_error": null
+        }
+      },
+      "message": "Team is not fully resolved.",
+      "query_type": "home_wins"
+    }
+  },
+  {
+    "id": "c5",
+    "category": "missing_season",
+    "query": "Manchester City match count in EPL",
+    "expected_status": "error",
+    "gold_count": null,
+    "baseline_status": "error",
+    "baseline_step": "resolve_competition",
+    "baseline_value": null,
+    "baseline_correct": null,
+    "full_status": "error",
+    "full_step": "validate",
+    "full_value": null,
+    "full_correct": null,
+    "comp_confidence": 0.35,
+    "team_confidence": 0.95,
+    "validator_decision": "CLARIFY",
+    "sql_spec": {
+      "competition_mention": {
+        "abb": "epl",
+        "league_name": null
+      },
+      "competition_context": {
+        "league": "en",
+        "seasons": []
+      },
+      "team_mention": {
+        "team_name": "manchester city"
+      },
+      "team_context": {
+        "league": "en"
+      },
+      "query_type": "match_count"
+    },
+    "baseline_result": {
+      "mode": "weak_baseline_single_pass",
+      "query": "Manchester City match count in EPL",
+      "status": "error",
+      "step": "resolve_competition",
+      "message": "Competition resolution failed in weak baseline",
+      "sql_spec": {
+        "competition_mention": {
+          "abb": "epl",
+          "league_name": null
+        },
+        "competition_context": {
+          "league": "en",
+          "seasons": []
+        },
+        "team_mention": {
+          "team_name": "manchester city"
+        },
+        "team_context": {
+          "league": "en"
+        },
+        "query_type": "match_count"
+      },
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "NOT_FOUND",
+        "value": null,
+        "debug": {
+          "mode": "weak_baseline"
+        }
+      },
+      "team_result": null,
+      "sql": null,
+      "params": null,
+      "execution_result": null
+    },
+    "full_result": {
+      "status": "error",
+      "step": "validate",
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "AMBIGUOUS",
+        "confidence": 0.35,
+        "value": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "debug": {
+          "mention": {
+            "abb": "epl",
+            "league_name": null
+          },
+          "context": {
+            "league": "en",
+            "seasons": []
+          }
+        }
+      },
+      "team_result": {
+        "entity_type": "team",
+        "decision": "RESOLVED",
+        "confidence": 0.95,
+        "value": [
+          4
+        ],
+        "debug": {
+          "mention": {
+            "team_name": "manchester city"
+          },
+          "context": {
+            "league": "en"
+          }
+        }
+      },
+      "sql": null,
+      "params": null,
+      "execution_result": null,
+      "validator_result": {
+        "decision": "CLARIFY",
+        "reason": "Competition is not fully resolved.",
+        "suggestion": "Provide clearer league or season information.",
+        "debug": {
+          "query_spec": {
+            "competition_mention": {
+              "abb": "epl",
+              "league_name": null
+            },
+            "competition_context": {
+              "league": "en",
+              "seasons": []
+            },
+            "team_mention": {
+              "team_name": "manchester city"
+            },
+            "team_context": {
+              "league": "en"
+            },
+            "query_type": "match_count"
+          },
+          "competition_result": {
+            "entity_type": "competition",
+            "decision": "AMBIGUOUS",
+            "confidence": 0.35,
+            "value": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "debug": {
+              "mention": {
+                "abb": "epl",
+                "league_name": null
+              },
+              "context": {
+                "league": "en",
+                "seasons": []
+              }
+            }
+          },
+          "team_result": {
+            "entity_type": "team",
+            "decision": "RESOLVED",
+            "confidence": 0.95,
+            "value": [
+              4
+            ],
+            "debug": {
+              "mention": {
+                "team_name": "manchester city"
+              },
+              "context": {
+                "league": "en"
+              }
+            }
+          },
+          "sql": null,
+          "params": null,
+          "execution_result": null,
+          "build_error": null
+        }
+      },
+      "message": "Competition is not fully resolved.",
+      "query_type": "match_count"
+    }
+  },
+  {
+    "id": "c6",
+    "category": "missing_league",
+    "query": "Manchester City home wins in 2021-22",
+    "expected_status": "error",
+    "gold_count": null,
+    "baseline_status": "error",
+    "baseline_step": "resolve_competition",
+    "baseline_value": null,
+    "baseline_correct": null,
+    "full_status": "error",
+    "full_step": "validate",
+    "full_value": null,
+    "full_correct": null,
+    "comp_confidence": 0.2,
+    "team_confidence": 0.2,
+    "validator_decision": "CLARIFY",
+    "sql_spec": {
+      "competition_mention": {
+        "abb": null,
+        "league_name": null
+      },
+      "competition_context": {
+        "league": null,
+        "seasons": [
+          "2021-22"
+        ]
+      },
+      "team_mention": {
+        "team_name": "manchester city"
+      },
+      "team_context": {
+        "league": null
+      },
+      "query_type": "home_wins"
+    },
+    "baseline_result": {
+      "mode": "weak_baseline_single_pass",
+      "query": "Manchester City home wins in 2021-22",
+      "status": "error",
+      "step": "resolve_competition",
+      "message": "Competition resolution failed in weak baseline",
+      "sql_spec": {
+        "competition_mention": {
+          "abb": null,
+          "league_name": null
+        },
+        "competition_context": {
+          "league": null,
+          "seasons": [
+            "2021-22"
+          ]
+        },
+        "team_mention": {
+          "team_name": "manchester city"
+        },
+        "team_context": {
+          "league": null
+        },
+        "query_type": "home_wins"
+      },
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "NOT_FOUND",
+        "value": null,
+        "debug": {
+          "mode": "weak_baseline"
+        }
+      },
+      "team_result": null,
+      "sql": null,
+      "params": null,
+      "execution_result": null
+    },
+    "full_result": {
+      "status": "error",
+      "step": "validate",
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "AMBIGUOUS",
+        "confidence": 0.2,
+        "value": null,
+        "debug": {
+          "mention": {
+            "abb": null,
+            "league_name": null
+          },
+          "context": {
+            "league": null,
+            "seasons": [
+              "2021-22"
+            ]
+          }
+        }
+      },
+      "team_result": {
+        "entity_type": "team",
+        "decision": "AMBIGUOUS",
+        "confidence": 0.2,
+        "value": null,
+        "debug": {
+          "mention": {
+            "team_name": "manchester city"
+          },
+          "context": {
+            "league": null
+          }
+        }
+      },
+      "sql": null,
+      "params": null,
+      "execution_result": null,
+      "validator_result": {
+        "decision": "CLARIFY",
+        "reason": "Competition is not fully resolved.",
+        "suggestion": "Provide clearer league or season information.",
+        "debug": {
+          "query_spec": {
+            "competition_mention": {
+              "abb": null,
+              "league_name": null
+            },
+            "competition_context": {
+              "league": null,
+              "seasons": [
+                "2021-22"
+              ]
+            },
+            "team_mention": {
+              "team_name": "manchester city"
+            },
+            "team_context": {
+              "league": null
+            },
+            "query_type": "home_wins"
+          },
+          "competition_result": {
+            "entity_type": "competition",
+            "decision": "AMBIGUOUS",
+            "confidence": 0.2,
+            "value": null,
+            "debug": {
+              "mention": {
+                "abb": null,
+                "league_name": null
+              },
+              "context": {
+                "league": null,
+                "seasons": [
+                  "2021-22"
+                ]
+              }
+            }
+          },
+          "team_result": {
+            "entity_type": "team",
+            "decision": "AMBIGUOUS",
+            "confidence": 0.2,
+            "value": null,
+            "debug": {
+              "mention": {
+                "team_name": "manchester city"
+              },
+              "context": {
+                "league": null
+              }
+            }
+          },
+          "sql": null,
+          "params": null,
+          "execution_result": null,
+          "build_error": null
+        }
+      },
+      "message": "Competition is not fully resolved.",
+      "query_type": "home_wins"
+    }
+  },
+  {
+    "id": "c7",
+    "category": "multi_season",
+    "query": "Real Sociedad home wins in LaLiga 2022-23 2023-24",
+    "expected_status": "success",
+    "gold_count": null,
+    "baseline_status": "error",
+    "baseline_step": "resolve_competition",
+    "baseline_value": null,
+    "baseline_correct": null,
+    "full_status": "success",
+    "full_step": "done",
+    "full_value": 19,
+    "full_correct": null,
+    "comp_confidence": 1.0,
+    "team_confidence": 0.85,
+    "validator_decision": "OK",
+    "sql_spec": {
+      "competition_mention": {
+        "abb": "laliga",
+        "league_name": null
+      },
+      "competition_context": {
+        "league": "es",
+        "seasons": [
+          "2022-23",
+          "2023-24"
+        ]
+      },
+      "team_mention": {
+        "team_name": "real sociedad"
+      },
+      "team_context": {
+        "league": "es"
+      },
+      "query_type": "home_wins"
+    },
+    "baseline_result": {
+      "mode": "weak_baseline_single_pass",
+      "query": "Real Sociedad home wins in LaLiga 2022-23 2023-24",
+      "status": "error",
+      "step": "resolve_competition",
+      "message": "Competition resolution failed in weak baseline",
+      "sql_spec": {
+        "competition_mention": {
+          "abb": "laliga",
+          "league_name": null
+        },
+        "competition_context": {
+          "league": "es",
+          "seasons": [
+            "2022-23",
+            "2023-24"
+          ]
+        },
+        "team_mention": {
+          "team_name": "real sociedad"
+        },
+        "team_context": {
+          "league": "es"
+        },
+        "query_type": "home_wins"
+      },
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "NOT_FOUND",
+        "value": null,
+        "debug": {
+          "mode": "weak_baseline"
+        }
+      },
+      "team_result": null,
+      "sql": null,
+      "params": null,
+      "execution_result": null
+    },
+    "full_result": {
+      "status": "success",
+      "step": "done",
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "RESOLVED",
+        "confidence": 1.0,
+        "value": [
+          10,
+          11
+        ],
+        "debug": {
+          "mention": {
+            "abb": "laliga",
+            "league_name": null
+          },
+          "context": {
+            "league": "es",
+            "seasons": [
+              "2022-23",
+              "2023-24"
+            ]
+          }
+        }
+      },
+      "team_result": {
+        "entity_type": "team",
+        "decision": "RESOLVED",
+        "confidence": 0.85,
+        "value": [
+          33,
+          52
+        ],
+        "debug": {
+          "mention": {
+            "team_name": "real sociedad"
+          },
+          "context": {
+            "league": "es"
+          }
+        }
+      },
+      "sql": "\n            SELECT COUNT(*)\n            FROM matches\n            WHERE comp_id IN (?,?)\n              AND home_team_id IN (?,?)\n              AND home_goals > away_goals\n        ",
+      "params": [
+        10,
+        11,
+        33,
+        52
+      ],
+      "execution_result": {
+        "status": "success",
+        "columns": [
+          "COUNT(*)"
+        ],
+        "rows": [
+          [
+            19
+          ]
+        ],
+        "row_count": 1,
+        "error": null
+      },
+      "validator_result": {
+        "decision": "OK",
+        "reason": "Query executed successfully and returned expected result shape.",
+        "suggestion": null,
+        "debug": {
+          "query_spec": {
+            "competition_mention": {
+              "abb": "laliga",
+              "league_name": null
+            },
+            "competition_context": {
+              "league": "es",
+              "seasons": [
+                "2022-23",
+                "2023-24"
+              ]
+            },
+            "team_mention": {
+              "team_name": "real sociedad"
+            },
+            "team_context": {
+              "league": "es"
+            },
+            "query_type": "home_wins"
+          },
+          "competition_result": {
+            "entity_type": "competition",
+            "decision": "RESOLVED",
+            "confidence": 1.0,
+            "value": [
+              10,
+              11
+            ],
+            "debug": {
+              "mention": {
+                "abb": "laliga",
+                "league_name": null
+              },
+              "context": {
+                "league": "es",
+                "seasons": [
+                  "2022-23",
+                  "2023-24"
+                ]
+              }
+            }
+          },
+          "team_result": {
+            "entity_type": "team",
+            "decision": "RESOLVED",
+            "confidence": 0.85,
+            "value": [
+              33,
+              52
+            ],
+            "debug": {
+              "mention": {
+                "team_name": "real sociedad"
+              },
+              "context": {
+                "league": "es"
+              }
+            }
+          },
+          "sql": "\n            SELECT COUNT(*)\n            FROM matches\n            WHERE comp_id IN (?,?)\n              AND home_team_id IN (?,?)\n              AND home_goals > away_goals\n        ",
+          "params": [
+            10,
+            11,
+            33,
+            52
+          ],
+          "execution_result": {
+            "status": "success",
+            "columns": [
+              "COUNT(*)"
+            ],
+            "rows": [
+              [
+                19
+              ]
+            ],
+            "row_count": 1,
+            "error": null
+          },
+          "build_error": null
+        }
+      },
+      "message": "Query executed successfully",
+      "query_type": "home_wins"
+    }
+  },
+  {
+    "id": "c8",
+    "category": "merged_team_match_count",
+    "query": "How many matches did Real Sociedad play in LaLiga 2023-24?",
+    "expected_status": "success",
+    "gold_count": null,
+    "baseline_status": "success",
+    "baseline_step": "done",
+    "baseline_value": 0,
+    "baseline_correct": null,
+    "full_status": "success",
+    "full_step": "done",
+    "full_value": 38,
+    "full_correct": null,
+    "comp_confidence": 1.0,
+    "team_confidence": 0.85,
+    "validator_decision": "OK",
+    "sql_spec": {
+      "competition_mention": {
+        "abb": "laliga",
+        "league_name": null
+      },
+      "competition_context": {
+        "league": "es",
+        "seasons": [
+          "2023-24"
+        ]
+      },
+      "team_mention": {
+        "team_name": "real sociedad"
+      },
+      "team_context": {
+        "league": "es"
+      },
+      "query_type": "match_count"
+    },
+    "baseline_result": {
+      "mode": "weak_baseline_single_pass",
+      "query": "How many matches did Real Sociedad play in LaLiga 2023-24?",
+      "status": "success",
+      "step": "done",
+      "message": "Weak baseline query executed successfully",
+      "sql_spec": {
+        "competition_mention": {
+          "abb": "laliga",
+          "league_name": null
+        },
+        "competition_context": {
+          "league": "es",
+          "seasons": [
+            "2023-24"
+          ]
+        },
+        "team_mention": {
+          "team_name": "real sociedad"
+        },
+        "team_context": {
+          "league": "es"
+        },
+        "query_type": "match_count"
+      },
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "RESOLVED",
+        "value": [
+          11
+        ],
+        "debug": {
+          "mode": "weak_baseline"
+        }
+      },
+      "team_result": {
+        "entity_type": "team",
+        "decision": "RESOLVED",
+        "value": [
+          33
+        ],
+        "debug": {
+          "mode": "weak_baseline"
+        }
+      },
+      "sql": "\n            SELECT COUNT(*)\n            FROM matches\n            WHERE comp_id IN (?)\n              AND (\n                    home_team_id IN (?)\n                    OR\n                    away_team_id IN (?)\n              )\n        ",
+      "params": [
+        11,
+        33,
+        33
+      ],
+      "execution_result": {
+        "status": "success",
+        "columns": [
+          "COUNT(*)"
+        ],
+        "rows": [
+          [
+            0
+          ]
+        ],
+        "row_count": 1,
+        "error": null
+      }
+    },
+    "full_result": {
+      "status": "success",
+      "step": "done",
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "RESOLVED",
+        "confidence": 1.0,
+        "value": [
+          11
+        ],
+        "debug": {
+          "mention": {
+            "abb": "laliga",
+            "league_name": null
+          },
+          "context": {
+            "league": "es",
+            "seasons": [
+              "2023-24"
+            ]
+          }
+        }
+      },
+      "team_result": {
+        "entity_type": "team",
+        "decision": "RESOLVED",
+        "confidence": 0.85,
+        "value": [
+          33,
+          52
+        ],
+        "debug": {
+          "mention": {
+            "team_name": "real sociedad"
+          },
+          "context": {
+            "league": "es"
+          }
+        }
+      },
+      "sql": "\n            SELECT COUNT(*)\n            FROM matches\n            WHERE comp_id IN (?)\n              AND (\n                    home_team_id IN (?,?)\n                    OR\n                    away_team_id IN (?,?)\n              )\n        ",
+      "params": [
+        11,
+        33,
+        52,
+        33,
+        52
+      ],
+      "execution_result": {
+        "status": "success",
+        "columns": [
+          "COUNT(*)"
+        ],
+        "rows": [
+          [
+            38
+          ]
+        ],
+        "row_count": 1,
+        "error": null
+      },
+      "validator_result": {
+        "decision": "OK",
+        "reason": "Query executed successfully and returned expected result shape.",
+        "suggestion": null,
+        "debug": {
+          "query_spec": {
+            "competition_mention": {
+              "abb": "laliga",
+              "league_name": null
+            },
+            "competition_context": {
+              "league": "es",
+              "seasons": [
+                "2023-24"
+              ]
+            },
+            "team_mention": {
+              "team_name": "real sociedad"
+            },
+            "team_context": {
+              "league": "es"
+            },
+            "query_type": "match_count"
+          },
+          "competition_result": {
+            "entity_type": "competition",
+            "decision": "RESOLVED",
+            "confidence": 1.0,
+            "value": [
+              11
+            ],
+            "debug": {
+              "mention": {
+                "abb": "laliga",
+                "league_name": null
+              },
+              "context": {
+                "league": "es",
+                "seasons": [
+                  "2023-24"
+                ]
+              }
+            }
+          },
+          "team_result": {
+            "entity_type": "team",
+            "decision": "RESOLVED",
+            "confidence": 0.85,
+            "value": [
+              33,
+              52
+            ],
+            "debug": {
+              "mention": {
+                "team_name": "real sociedad"
+              },
+              "context": {
+                "league": "es"
+              }
+            }
+          },
+          "sql": "\n            SELECT COUNT(*)\n            FROM matches\n            WHERE comp_id IN (?)\n              AND (\n                    home_team_id IN (?,?)\n                    OR\n                    away_team_id IN (?,?)\n              )\n        ",
+          "params": [
+            11,
+            33,
+            52,
+            33,
+            52
+          ],
+          "execution_result": {
+            "status": "success",
+            "columns": [
+              "COUNT(*)"
+            ],
+            "rows": [
+              [
+                38
+              ]
+            ],
+            "row_count": 1,
+            "error": null
+          },
+          "build_error": null
+        }
+      },
+      "message": "Query executed successfully",
+      "query_type": "match_count"
+    }
+  },
+  {
+    "id": "c9",
+    "category": "single_team_away_wins",
+    "query": "Barcelona away wins in LaLiga 2024-25",
+    "expected_status": "success",
+    "gold_count": null,
+    "baseline_status": "success",
+    "baseline_step": "done",
+    "baseline_value": 13,
+    "baseline_correct": null,
+    "full_status": "success",
+    "full_step": "done",
+    "full_value": 13,
+    "full_correct": null,
+    "comp_confidence": 1.0,
+    "team_confidence": 0.95,
+    "validator_decision": "OK",
+    "sql_spec": {
+      "competition_mention": {
+        "abb": "laliga",
+        "league_name": null
+      },
+      "competition_context": {
+        "league": "es",
+        "seasons": [
+          "2024-25"
+        ]
+      },
+      "team_mention": {
+        "team_name": "barcelona"
+      },
+      "team_context": {
+        "league": "es"
+      },
+      "query_type": "away_wins"
+    },
+    "baseline_result": {
+      "mode": "weak_baseline_single_pass",
+      "query": "Barcelona away wins in LaLiga 2024-25",
+      "status": "success",
+      "step": "done",
+      "message": "Weak baseline query executed successfully",
+      "sql_spec": {
+        "competition_mention": {
+          "abb": "laliga",
+          "league_name": null
+        },
+        "competition_context": {
+          "league": "es",
+          "seasons": [
+            "2024-25"
+          ]
+        },
+        "team_mention": {
+          "team_name": "barcelona"
+        },
+        "team_context": {
+          "league": "es"
+        },
+        "query_type": "away_wins"
+      },
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "RESOLVED",
+        "value": [
+          12
+        ],
+        "debug": {
+          "mode": "weak_baseline"
+        }
+      },
+      "team_result": {
+        "entity_type": "team",
+        "decision": "RESOLVED",
+        "value": [
+          29
+        ],
+        "debug": {
+          "mode": "weak_baseline"
+        }
+      },
+      "sql": "\n            SELECT COUNT(*)\n            FROM matches\n            WHERE comp_id IN (?)\n              AND away_team_id IN (?)\n              AND away_goals > home_goals\n        ",
+      "params": [
+        12,
+        29
+      ],
+      "execution_result": {
+        "status": "success",
+        "columns": [
+          "COUNT(*)"
+        ],
+        "rows": [
+          [
+            13
+          ]
+        ],
+        "row_count": 1,
+        "error": null
+      }
+    },
+    "full_result": {
+      "status": "success",
+      "step": "done",
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "RESOLVED",
+        "confidence": 1.0,
+        "value": [
+          12
+        ],
+        "debug": {
+          "mention": {
+            "abb": "laliga",
+            "league_name": null
+          },
+          "context": {
+            "league": "es",
+            "seasons": [
+              "2024-25"
+            ]
+          }
+        }
+      },
+      "team_result": {
+        "entity_type": "team",
+        "decision": "RESOLVED",
+        "confidence": 0.95,
+        "value": [
+          29
+        ],
+        "debug": {
+          "mention": {
+            "team_name": "barcelona"
+          },
+          "context": {
+            "league": "es"
+          }
+        }
+      },
+      "sql": "\n            SELECT COUNT(*)\n            FROM matches\n            WHERE comp_id IN (?)\n              AND away_team_id IN (?)\n              AND away_goals > home_goals\n        ",
+      "params": [
+        12,
+        29
+      ],
+      "execution_result": {
+        "status": "success",
+        "columns": [
+          "COUNT(*)"
+        ],
+        "rows": [
+          [
+            13
+          ]
+        ],
+        "row_count": 1,
+        "error": null
+      },
+      "validator_result": {
+        "decision": "OK",
+        "reason": "Query executed successfully and returned expected result shape.",
+        "suggestion": null,
+        "debug": {
+          "query_spec": {
+            "competition_mention": {
+              "abb": "laliga",
+              "league_name": null
+            },
+            "competition_context": {
+              "league": "es",
+              "seasons": [
+                "2024-25"
+              ]
+            },
+            "team_mention": {
+              "team_name": "barcelona"
+            },
+            "team_context": {
+              "league": "es"
+            },
+            "query_type": "away_wins"
+          },
+          "competition_result": {
+            "entity_type": "competition",
+            "decision": "RESOLVED",
+            "confidence": 1.0,
+            "value": [
+              12
+            ],
+            "debug": {
+              "mention": {
+                "abb": "laliga",
+                "league_name": null
+              },
+              "context": {
+                "league": "es",
+                "seasons": [
+                  "2024-25"
+                ]
+              }
+            }
+          },
+          "team_result": {
+            "entity_type": "team",
+            "decision": "RESOLVED",
+            "confidence": 0.95,
+            "value": [
+              29
+            ],
+            "debug": {
+              "mention": {
+                "team_name": "barcelona"
+              },
+              "context": {
+                "league": "es"
+              }
+            }
+          },
+          "sql": "\n            SELECT COUNT(*)\n            FROM matches\n            WHERE comp_id IN (?)\n              AND away_team_id IN (?)\n              AND away_goals > home_goals\n        ",
+          "params": [
+            12,
+            29
+          ],
+          "execution_result": {
+            "status": "success",
+            "columns": [
+              "COUNT(*)"
+            ],
+            "rows": [
+              [
+                13
+              ]
+            ],
+            "row_count": 1,
+            "error": null
+          },
+          "build_error": null
+        }
+      },
+      "message": "Query executed successfully",
+      "query_type": "away_wins"
+    }
+  },
+  {
+    "id": "c10",
+    "category": "single_season_count_variant",
+    "query": "How many matches did Manchester City play in EPL 2021-22?",
+    "expected_status": "success",
+    "gold_count": 38,
+    "baseline_status": "success",
+    "baseline_step": "done",
+    "baseline_value": 38,
+    "baseline_correct": true,
+    "full_status": "success",
+    "full_step": "done",
+    "full_value": 38,
+    "full_correct": true,
+    "comp_confidence": 1.0,
+    "team_confidence": 0.95,
+    "validator_decision": "OK",
+    "sql_spec": {
+      "competition_mention": {
+        "abb": "epl",
+        "league_name": null
+      },
+      "competition_context": {
+        "league": "en",
+        "seasons": [
+          "2021-22"
+        ]
+      },
+      "team_mention": {
+        "team_name": "manchester city"
+      },
+      "team_context": {
+        "league": "en"
+      },
+      "query_type": "match_count"
+    },
+    "baseline_result": {
+      "mode": "weak_baseline_single_pass",
+      "query": "How many matches did Manchester City play in EPL 2021-22?",
+      "status": "success",
+      "step": "done",
+      "message": "Weak baseline query executed successfully",
+      "sql_spec": {
+        "competition_mention": {
+          "abb": "epl",
+          "league_name": null
+        },
+        "competition_context": {
+          "league": "en",
+          "seasons": [
+            "2021-22"
+          ]
+        },
+        "team_mention": {
+          "team_name": "manchester city"
+        },
+        "team_context": {
+          "league": "en"
+        },
+        "query_type": "match_count"
+      },
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "RESOLVED",
+        "value": [
+          3
+        ],
+        "debug": {
+          "mode": "weak_baseline"
+        }
+      },
+      "team_result": {
+        "entity_type": "team",
+        "decision": "RESOLVED",
+        "value": [
+          4
+        ],
+        "debug": {
+          "mode": "weak_baseline"
+        }
+      },
+      "sql": "\n            SELECT COUNT(*)\n            FROM matches\n            WHERE comp_id IN (?)\n              AND (\n                    home_team_id IN (?)\n                    OR\n                    away_team_id IN (?)\n              )\n        ",
+      "params": [
+        3,
+        4,
+        4
+      ],
+      "execution_result": {
+        "status": "success",
+        "columns": [
+          "COUNT(*)"
+        ],
+        "rows": [
+          [
+            38
+          ]
+        ],
+        "row_count": 1,
+        "error": null
+      }
+    },
+    "full_result": {
+      "status": "success",
+      "step": "done",
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "RESOLVED",
+        "confidence": 1.0,
+        "value": [
+          3
+        ],
+        "debug": {
+          "mention": {
+            "abb": "epl",
+            "league_name": null
+          },
+          "context": {
+            "league": "en",
+            "seasons": [
+              "2021-22"
+            ]
+          }
+        }
+      },
+      "team_result": {
+        "entity_type": "team",
+        "decision": "RESOLVED",
+        "confidence": 0.95,
+        "value": [
+          4
+        ],
+        "debug": {
+          "mention": {
+            "team_name": "manchester city"
+          },
+          "context": {
+            "league": "en"
+          }
+        }
+      },
+      "sql": "\n            SELECT COUNT(*)\n            FROM matches\n            WHERE comp_id IN (?)\n              AND (\n                    home_team_id IN (?)\n                    OR\n                    away_team_id IN (?)\n              )\n        ",
+      "params": [
+        3,
+        4,
+        4
+      ],
+      "execution_result": {
+        "status": "success",
+        "columns": [
+          "COUNT(*)"
+        ],
+        "rows": [
+          [
+            38
+          ]
+        ],
+        "row_count": 1,
+        "error": null
+      },
+      "validator_result": {
+        "decision": "OK",
+        "reason": "Query executed successfully and returned expected result shape.",
+        "suggestion": null,
+        "debug": {
+          "query_spec": {
+            "competition_mention": {
+              "abb": "epl",
+              "league_name": null
+            },
+            "competition_context": {
+              "league": "en",
+              "seasons": [
+                "2021-22"
+              ]
+            },
+            "team_mention": {
+              "team_name": "manchester city"
+            },
+            "team_context": {
+              "league": "en"
+            },
+            "query_type": "match_count"
+          },
+          "competition_result": {
+            "entity_type": "competition",
+            "decision": "RESOLVED",
+            "confidence": 1.0,
+            "value": [
+              3
+            ],
+            "debug": {
+              "mention": {
+                "abb": "epl",
+                "league_name": null
+              },
+              "context": {
+                "league": "en",
+                "seasons": [
+                  "2021-22"
+                ]
+              }
+            }
+          },
+          "team_result": {
+            "entity_type": "team",
+            "decision": "RESOLVED",
+            "confidence": 0.95,
+            "value": [
+              4
+            ],
+            "debug": {
+              "mention": {
+                "team_name": "manchester city"
+              },
+              "context": {
+                "league": "en"
+              }
+            }
+          },
+          "sql": "\n            SELECT COUNT(*)\n            FROM matches\n            WHERE comp_id IN (?)\n              AND (\n                    home_team_id IN (?)\n                    OR\n                    away_team_id IN (?)\n              )\n        ",
+          "params": [
+            3,
+            4,
+            4
+          ],
+          "execution_result": {
+            "status": "success",
+            "columns": [
+              "COUNT(*)"
+            ],
+            "rows": [
+              [
+                38
+              ]
+            ],
+            "row_count": 1,
+            "error": null
+          },
+          "build_error": null
+        }
+      },
+      "message": "Query executed successfully",
+      "query_type": "match_count"
+    }
+  },
+  {
+    "id": "c11",
+    "category": "merged_team_away_wins_extra",
+    "query": "Real Sociedad away wins in LaLiga 2023-24",
+    "expected_status": "success",
+    "gold_count": null,
+    "baseline_status": "success",
+    "baseline_step": "done",
+    "baseline_value": 0,
+    "baseline_correct": null,
+    "full_status": "success",
+    "full_step": "done",
+    "full_value": 8,
+    "full_correct": null,
+    "comp_confidence": 1.0,
+    "team_confidence": 0.85,
+    "validator_decision": "OK",
+    "sql_spec": {
+      "competition_mention": {
+        "abb": "laliga",
+        "league_name": null
+      },
+      "competition_context": {
+        "league": "es",
+        "seasons": [
+          "2023-24"
+        ]
+      },
+      "team_mention": {
+        "team_name": "real sociedad"
+      },
+      "team_context": {
+        "league": "es"
+      },
+      "query_type": "away_wins"
+    },
+    "baseline_result": {
+      "mode": "weak_baseline_single_pass",
+      "query": "Real Sociedad away wins in LaLiga 2023-24",
+      "status": "success",
+      "step": "done",
+      "message": "Weak baseline query executed successfully",
+      "sql_spec": {
+        "competition_mention": {
+          "abb": "laliga",
+          "league_name": null
+        },
+        "competition_context": {
+          "league": "es",
+          "seasons": [
+            "2023-24"
+          ]
+        },
+        "team_mention": {
+          "team_name": "real sociedad"
+        },
+        "team_context": {
+          "league": "es"
+        },
+        "query_type": "away_wins"
+      },
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "RESOLVED",
+        "value": [
+          11
+        ],
+        "debug": {
+          "mode": "weak_baseline"
+        }
+      },
+      "team_result": {
+        "entity_type": "team",
+        "decision": "RESOLVED",
+        "value": [
+          33
+        ],
+        "debug": {
+          "mode": "weak_baseline"
+        }
+      },
+      "sql": "\n            SELECT COUNT(*)\n            FROM matches\n            WHERE comp_id IN (?)\n              AND away_team_id IN (?)\n              AND away_goals > home_goals\n        ",
+      "params": [
+        11,
+        33
+      ],
+      "execution_result": {
+        "status": "success",
+        "columns": [
+          "COUNT(*)"
+        ],
+        "rows": [
+          [
+            0
+          ]
+        ],
+        "row_count": 1,
+        "error": null
+      }
+    },
+    "full_result": {
+      "status": "success",
+      "step": "done",
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "RESOLVED",
+        "confidence": 1.0,
+        "value": [
+          11
+        ],
+        "debug": {
+          "mention": {
+            "abb": "laliga",
+            "league_name": null
+          },
+          "context": {
+            "league": "es",
+            "seasons": [
+              "2023-24"
+            ]
+          }
+        }
+      },
+      "team_result": {
+        "entity_type": "team",
+        "decision": "RESOLVED",
+        "confidence": 0.85,
+        "value": [
+          33,
+          52
+        ],
+        "debug": {
+          "mention": {
+            "team_name": "real sociedad"
+          },
+          "context": {
+            "league": "es"
+          }
+        }
+      },
+      "sql": "\n            SELECT COUNT(*)\n            FROM matches\n            WHERE comp_id IN (?)\n              AND away_team_id IN (?,?)\n              AND away_goals > home_goals\n        ",
+      "params": [
+        11,
+        33,
+        52
+      ],
+      "execution_result": {
+        "status": "success",
+        "columns": [
+          "COUNT(*)"
+        ],
+        "rows": [
+          [
+            8
+          ]
+        ],
+        "row_count": 1,
+        "error": null
+      },
+      "validator_result": {
+        "decision": "OK",
+        "reason": "Query executed successfully and returned expected result shape.",
+        "suggestion": null,
+        "debug": {
+          "query_spec": {
+            "competition_mention": {
+              "abb": "laliga",
+              "league_name": null
+            },
+            "competition_context": {
+              "league": "es",
+              "seasons": [
+                "2023-24"
+              ]
+            },
+            "team_mention": {
+              "team_name": "real sociedad"
+            },
+            "team_context": {
+              "league": "es"
+            },
+            "query_type": "away_wins"
+          },
+          "competition_result": {
+            "entity_type": "competition",
+            "decision": "RESOLVED",
+            "confidence": 1.0,
+            "value": [
+              11
+            ],
+            "debug": {
+              "mention": {
+                "abb": "laliga",
+                "league_name": null
+              },
+              "context": {
+                "league": "es",
+                "seasons": [
+                  "2023-24"
+                ]
+              }
+            }
+          },
+          "team_result": {
+            "entity_type": "team",
+            "decision": "RESOLVED",
+            "confidence": 0.85,
+            "value": [
+              33,
+              52
+            ],
+            "debug": {
+              "mention": {
+                "team_name": "real sociedad"
+              },
+              "context": {
+                "league": "es"
+              }
+            }
+          },
+          "sql": "\n            SELECT COUNT(*)\n            FROM matches\n            WHERE comp_id IN (?)\n              AND away_team_id IN (?,?)\n              AND away_goals > home_goals\n        ",
+          "params": [
+            11,
+            33,
+            52
+          ],
+          "execution_result": {
+            "status": "success",
+            "columns": [
+              "COUNT(*)"
+            ],
+            "rows": [
+              [
+                8
+              ]
+            ],
+            "row_count": 1,
+            "error": null
+          },
+          "build_error": null
+        }
+      },
+      "message": "Query executed successfully",
+      "query_type": "away_wins"
+    }
+  },
+  {
+    "id": "c12",
+    "category": "merged_team_match_count_extra",
+    "query": "Atletico Madrid match count in LaLiga 2023-24",
+    "expected_status": "success",
+    "gold_count": null,
+    "baseline_status": "success",
+    "baseline_step": "done",
+    "baseline_value": 0,
+    "baseline_correct": null,
+    "full_status": "success",
+    "full_step": "done",
+    "full_value": 38,
+    "full_correct": null,
+    "comp_confidence": 1.0,
+    "team_confidence": 0.85,
+    "validator_decision": "OK",
+    "sql_spec": {
+      "competition_mention": {
+        "abb": "laliga",
+        "league_name": null
+      },
+      "competition_context": {
+        "league": "es",
+        "seasons": [
+          "2023-24"
+        ]
+      },
+      "team_mention": {
+        "team_name": "atletico madrid"
+      },
+      "team_context": {
+        "league": "es"
+      },
+      "query_type": "match_count"
+    },
+    "baseline_result": {
+      "mode": "weak_baseline_single_pass",
+      "query": "Atletico Madrid match count in LaLiga 2023-24",
+      "status": "success",
+      "step": "done",
+      "message": "Weak baseline query executed successfully",
+      "sql_spec": {
+        "competition_mention": {
+          "abb": "laliga",
+          "league_name": null
+        },
+        "competition_context": {
+          "league": "es",
+          "seasons": [
+            "2023-24"
+          ]
+        },
+        "team_mention": {
+          "team_name": "atletico madrid"
+        },
+        "team_context": {
+          "league": "es"
+        },
+        "query_type": "match_count"
+      },
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "RESOLVED",
+        "value": [
+          11
+        ],
+        "debug": {
+          "mode": "weak_baseline"
+        }
+      },
+      "team_result": {
+        "entity_type": "team",
+        "decision": "RESOLVED",
+        "value": [
+          46
+        ],
+        "debug": {
+          "mode": "weak_baseline"
+        }
+      },
+      "sql": "\n            SELECT COUNT(*)\n            FROM matches\n            WHERE comp_id IN (?)\n              AND (\n                    home_team_id IN (?)\n                    OR\n                    away_team_id IN (?)\n              )\n        ",
+      "params": [
+        11,
+        46,
+        46
+      ],
+      "execution_result": {
+        "status": "success",
+        "columns": [
+          "COUNT(*)"
+        ],
+        "rows": [
+          [
+            0
+          ]
+        ],
+        "row_count": 1,
+        "error": null
+      }
+    },
+    "full_result": {
+      "status": "success",
+      "step": "done",
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "RESOLVED",
+        "confidence": 1.0,
+        "value": [
+          11
+        ],
+        "debug": {
+          "mention": {
+            "abb": "laliga",
+            "league_name": null
+          },
+          "context": {
+            "league": "es",
+            "seasons": [
+              "2023-24"
+            ]
+          }
+        }
+      },
+      "team_result": {
+        "entity_type": "team",
+        "decision": "RESOLVED",
+        "confidence": 0.85,
+        "value": [
+          46,
+          55
+        ],
+        "debug": {
+          "mention": {
+            "team_name": "atletico madrid"
+          },
+          "context": {
+            "league": "es"
+          }
+        }
+      },
+      "sql": "\n            SELECT COUNT(*)\n            FROM matches\n            WHERE comp_id IN (?)\n              AND (\n                    home_team_id IN (?,?)\n                    OR\n                    away_team_id IN (?,?)\n              )\n        ",
+      "params": [
+        11,
+        46,
+        55,
+        46,
+        55
+      ],
+      "execution_result": {
+        "status": "success",
+        "columns": [
+          "COUNT(*)"
+        ],
+        "rows": [
+          [
+            38
+          ]
+        ],
+        "row_count": 1,
+        "error": null
+      },
+      "validator_result": {
+        "decision": "OK",
+        "reason": "Query executed successfully and returned expected result shape.",
+        "suggestion": null,
+        "debug": {
+          "query_spec": {
+            "competition_mention": {
+              "abb": "laliga",
+              "league_name": null
+            },
+            "competition_context": {
+              "league": "es",
+              "seasons": [
+                "2023-24"
+              ]
+            },
+            "team_mention": {
+              "team_name": "atletico madrid"
+            },
+            "team_context": {
+              "league": "es"
+            },
+            "query_type": "match_count"
+          },
+          "competition_result": {
+            "entity_type": "competition",
+            "decision": "RESOLVED",
+            "confidence": 1.0,
+            "value": [
+              11
+            ],
+            "debug": {
+              "mention": {
+                "abb": "laliga",
+                "league_name": null
+              },
+              "context": {
+                "league": "es",
+                "seasons": [
+                  "2023-24"
+                ]
+              }
+            }
+          },
+          "team_result": {
+            "entity_type": "team",
+            "decision": "RESOLVED",
+            "confidence": 0.85,
+            "value": [
+              46,
+              55
+            ],
+            "debug": {
+              "mention": {
+                "team_name": "atletico madrid"
+              },
+              "context": {
+                "league": "es"
+              }
+            }
+          },
+          "sql": "\n            SELECT COUNT(*)\n            FROM matches\n            WHERE comp_id IN (?)\n              AND (\n                    home_team_id IN (?,?)\n                    OR\n                    away_team_id IN (?,?)\n              )\n        ",
+          "params": [
+            11,
+            46,
+            55,
+            46,
+            55
+          ],
+          "execution_result": {
+            "status": "success",
+            "columns": [
+              "COUNT(*)"
+            ],
+            "rows": [
+              [
+                38
+              ]
+            ],
+            "row_count": 1,
+            "error": null
+          },
+          "build_error": null
+        }
+      },
+      "message": "Query executed successfully",
+      "query_type": "match_count"
+    }
+  },
+  {
+    "id": "c13",
+    "category": "multi_season_epl",
+    "query": "Manchester City home wins in EPL 2020-21 2021-22",
+    "expected_status": "success",
+    "gold_count": null,
+    "baseline_status": "error",
+    "baseline_step": "resolve_competition",
+    "baseline_value": null,
+    "baseline_correct": null,
+    "full_status": "success",
+    "full_step": "done",
+    "full_value": 28,
+    "full_correct": null,
+    "comp_confidence": 1.0,
+    "team_confidence": 0.95,
+    "validator_decision": "OK",
+    "sql_spec": {
+      "competition_mention": {
+        "abb": "epl",
+        "league_name": null
+      },
+      "competition_context": {
+        "league": "en",
+        "seasons": [
+          "2020-21",
+          "2021-22"
+        ]
+      },
+      "team_mention": {
+        "team_name": "manchester city"
+      },
+      "team_context": {
+        "league": "en"
+      },
+      "query_type": "home_wins"
+    },
+    "baseline_result": {
+      "mode": "weak_baseline_single_pass",
+      "query": "Manchester City home wins in EPL 2020-21 2021-22",
+      "status": "error",
+      "step": "resolve_competition",
+      "message": "Competition resolution failed in weak baseline",
+      "sql_spec": {
+        "competition_mention": {
+          "abb": "epl",
+          "league_name": null
+        },
+        "competition_context": {
+          "league": "en",
+          "seasons": [
+            "2020-21",
+            "2021-22"
+          ]
+        },
+        "team_mention": {
+          "team_name": "manchester city"
+        },
+        "team_context": {
+          "league": "en"
+        },
+        "query_type": "home_wins"
+      },
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "NOT_FOUND",
+        "value": null,
+        "debug": {
+          "mode": "weak_baseline"
+        }
+      },
+      "team_result": null,
+      "sql": null,
+      "params": null,
+      "execution_result": null
+    },
+    "full_result": {
+      "status": "success",
+      "step": "done",
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "RESOLVED",
+        "confidence": 1.0,
+        "value": [
+          2,
+          3
+        ],
+        "debug": {
+          "mention": {
+            "abb": "epl",
+            "league_name": null
+          },
+          "context": {
+            "league": "en",
+            "seasons": [
+              "2020-21",
+              "2021-22"
+            ]
+          }
+        }
+      },
+      "team_result": {
+        "entity_type": "team",
+        "decision": "RESOLVED",
+        "confidence": 0.95,
+        "value": [
+          4
+        ],
+        "debug": {
+          "mention": {
+            "team_name": "manchester city"
+          },
+          "context": {
+            "league": "en"
+          }
+        }
+      },
+      "sql": "\n            SELECT COUNT(*)\n            FROM matches\n            WHERE comp_id IN (?,?)\n              AND home_team_id IN (?)\n              AND home_goals > away_goals\n        ",
+      "params": [
+        2,
+        3,
+        4
+      ],
+      "execution_result": {
+        "status": "success",
+        "columns": [
+          "COUNT(*)"
+        ],
+        "rows": [
+          [
+            28
+          ]
+        ],
+        "row_count": 1,
+        "error": null
+      },
+      "validator_result": {
+        "decision": "OK",
+        "reason": "Query executed successfully and returned expected result shape.",
+        "suggestion": null,
+        "debug": {
+          "query_spec": {
+            "competition_mention": {
+              "abb": "epl",
+              "league_name": null
+            },
+            "competition_context": {
+              "league": "en",
+              "seasons": [
+                "2020-21",
+                "2021-22"
+              ]
+            },
+            "team_mention": {
+              "team_name": "manchester city"
+            },
+            "team_context": {
+              "league": "en"
+            },
+            "query_type": "home_wins"
+          },
+          "competition_result": {
+            "entity_type": "competition",
+            "decision": "RESOLVED",
+            "confidence": 1.0,
+            "value": [
+              2,
+              3
+            ],
+            "debug": {
+              "mention": {
+                "abb": "epl",
+                "league_name": null
+              },
+              "context": {
+                "league": "en",
+                "seasons": [
+                  "2020-21",
+                  "2021-22"
+                ]
+              }
+            }
+          },
+          "team_result": {
+            "entity_type": "team",
+            "decision": "RESOLVED",
+            "confidence": 0.95,
+            "value": [
+              4
+            ],
+            "debug": {
+              "mention": {
+                "team_name": "manchester city"
+              },
+              "context": {
+                "league": "en"
+              }
+            }
+          },
+          "sql": "\n            SELECT COUNT(*)\n            FROM matches\n            WHERE comp_id IN (?,?)\n              AND home_team_id IN (?)\n              AND home_goals > away_goals\n        ",
+          "params": [
+            2,
+            3,
+            4
+          ],
+          "execution_result": {
+            "status": "success",
+            "columns": [
+              "COUNT(*)"
+            ],
+            "rows": [
+              [
+                28
+              ]
+            ],
+            "row_count": 1,
+            "error": null
+          },
+          "build_error": null
+        }
+      },
+      "message": "Query executed successfully",
+      "query_type": "home_wins"
+    }
+  },
+  {
+    "id": "c14",
+    "category": "missing_season_laliga",
+    "query": "Real Sociedad home wins in LaLiga",
+    "expected_status": "error",
+    "gold_count": null,
+    "baseline_status": "error",
+    "baseline_step": "resolve_competition",
+    "baseline_value": null,
+    "baseline_correct": null,
+    "full_status": "error",
+    "full_step": "validate",
+    "full_value": null,
+    "full_correct": null,
+    "comp_confidence": 0.35,
+    "team_confidence": 0.85,
+    "validator_decision": "CLARIFY",
+    "sql_spec": {
+      "competition_mention": {
+        "abb": "laliga",
+        "league_name": null
+      },
+      "competition_context": {
+        "league": "es",
+        "seasons": []
+      },
+      "team_mention": {
+        "team_name": "real sociedad"
+      },
+      "team_context": {
+        "league": "es"
+      },
+      "query_type": "home_wins"
+    },
+    "baseline_result": {
+      "mode": "weak_baseline_single_pass",
+      "query": "Real Sociedad home wins in LaLiga",
+      "status": "error",
+      "step": "resolve_competition",
+      "message": "Competition resolution failed in weak baseline",
+      "sql_spec": {
+        "competition_mention": {
+          "abb": "laliga",
+          "league_name": null
+        },
+        "competition_context": {
+          "league": "es",
+          "seasons": []
+        },
+        "team_mention": {
+          "team_name": "real sociedad"
+        },
+        "team_context": {
+          "league": "es"
+        },
+        "query_type": "home_wins"
+      },
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "NOT_FOUND",
+        "value": null,
+        "debug": {
+          "mode": "weak_baseline"
+        }
+      },
+      "team_result": null,
+      "sql": null,
+      "params": null,
+      "execution_result": null
+    },
+    "full_result": {
+      "status": "error",
+      "step": "validate",
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "AMBIGUOUS",
+        "confidence": 0.35,
+        "value": [
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "debug": {
+          "mention": {
+            "abb": "laliga",
+            "league_name": null
+          },
+          "context": {
+            "league": "es",
+            "seasons": []
+          }
+        }
+      },
+      "team_result": {
+        "entity_type": "team",
+        "decision": "RESOLVED",
+        "confidence": 0.85,
+        "value": [
+          33,
+          52
+        ],
+        "debug": {
+          "mention": {
+            "team_name": "real sociedad"
+          },
+          "context": {
+            "league": "es"
+          }
+        }
+      },
+      "sql": null,
+      "params": null,
+      "execution_result": null,
+      "validator_result": {
+        "decision": "CLARIFY",
+        "reason": "Competition is not fully resolved.",
+        "suggestion": "Provide clearer league or season information.",
+        "debug": {
+          "query_spec": {
+            "competition_mention": {
+              "abb": "laliga",
+              "league_name": null
+            },
+            "competition_context": {
+              "league": "es",
+              "seasons": []
+            },
+            "team_mention": {
+              "team_name": "real sociedad"
+            },
+            "team_context": {
+              "league": "es"
+            },
+            "query_type": "home_wins"
+          },
+          "competition_result": {
+            "entity_type": "competition",
+            "decision": "AMBIGUOUS",
+            "confidence": 0.35,
+            "value": [
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "debug": {
+              "mention": {
+                "abb": "laliga",
+                "league_name": null
+              },
+              "context": {
+                "league": "es",
+                "seasons": []
+              }
+            }
+          },
+          "team_result": {
+            "entity_type": "team",
+            "decision": "RESOLVED",
+            "confidence": 0.85,
+            "value": [
+              33,
+              52
+            ],
+            "debug": {
+              "mention": {
+                "team_name": "real sociedad"
+              },
+              "context": {
+                "league": "es"
+              }
+            }
+          },
+          "sql": null,
+          "params": null,
+          "execution_result": null,
+          "build_error": null
+        }
+      },
+      "message": "Competition is not fully resolved.",
+      "query_type": "home_wins"
+    }
+  },
+  {
+    "id": "c15",
+    "category": "goals_scored_single_team",
+    "query": "How many goals did Manchester City score in EPL 2021-22?",
+    "expected_status": "success",
+    "gold_count": null,
+    "baseline_status": "success",
+    "baseline_step": "done",
+    "baseline_value": 99,
+    "baseline_correct": null,
+    "full_status": "success",
+    "full_step": "done",
+    "full_value": 99,
+    "full_correct": null,
+    "comp_confidence": 1.0,
+    "team_confidence": 0.95,
+    "validator_decision": "OK",
+    "sql_spec": {
+      "competition_mention": {
+        "abb": "epl",
+        "league_name": null
+      },
+      "competition_context": {
+        "league": "en",
+        "seasons": [
+          "2021-22"
+        ]
+      },
+      "team_mention": {
+        "team_name": "manchester city"
+      },
+      "team_context": {
+        "league": "en"
+      },
+      "query_type": "goals_scored"
+    },
+    "baseline_result": {
+      "mode": "weak_baseline_single_pass",
+      "query": "How many goals did Manchester City score in EPL 2021-22?",
+      "status": "success",
+      "step": "done",
+      "message": "Weak baseline query executed successfully",
+      "sql_spec": {
+        "competition_mention": {
+          "abb": "epl",
+          "league_name": null
+        },
+        "competition_context": {
+          "league": "en",
+          "seasons": [
+            "2021-22"
+          ]
+        },
+        "team_mention": {
+          "team_name": "manchester city"
+        },
+        "team_context": {
+          "league": "en"
+        },
+        "query_type": "goals_scored"
+      },
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "RESOLVED",
+        "value": [
+          3
+        ],
+        "debug": {
+          "mode": "weak_baseline"
+        }
+      },
+      "team_result": {
+        "entity_type": "team",
+        "decision": "RESOLVED",
+        "value": [
+          4
+        ],
+        "debug": {
+          "mode": "weak_baseline"
+        }
+      },
+      "sql": "\n                SELECT COALESCE(\n                    SUM(\n                        CASE WHEN home_team_id IN (?) THEN home_goals ELSE 0 END +\n                        CASE WHEN away_team_id IN (?) THEN away_goals ELSE 0 END\n                    ),\n                    0\n                )\n                FROM matches\n                WHERE comp_id IN (?)\n                AND (\n                        home_team_id IN (?)\n                        OR\n                        away_team_id IN (?)\n                )\n            ",
+      "params": [
+        4,
+        4,
+        3,
+        4,
+        4
+      ],
+      "execution_result": {
+        "status": "success",
+        "columns": [
+          "COALESCE(\n                    SUM(\n                        CASE WHEN home_team_id IN (?) THEN home_goals ELSE 0 END +\n                        CASE WHEN away_team_id IN (?) THEN away_goals ELSE 0 END\n                    ),\n                    0\n                )"
+        ],
+        "rows": [
+          [
+            99
+          ]
+        ],
+        "row_count": 1,
+        "error": null
+      }
+    },
+    "full_result": {
+      "status": "success",
+      "step": "done",
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "RESOLVED",
+        "confidence": 1.0,
+        "value": [
+          3
+        ],
+        "debug": {
+          "mention": {
+            "abb": "epl",
+            "league_name": null
+          },
+          "context": {
+            "league": "en",
+            "seasons": [
+              "2021-22"
+            ]
+          }
+        }
+      },
+      "team_result": {
+        "entity_type": "team",
+        "decision": "RESOLVED",
+        "confidence": 0.95,
+        "value": [
+          4
+        ],
+        "debug": {
+          "mention": {
+            "team_name": "manchester city"
+          },
+          "context": {
+            "league": "en"
+          }
+        }
+      },
+      "sql": "\n            SELECT COALESCE(\n                SUM(\n                    CASE WHEN home_team_id IN (?) THEN home_goals ELSE 0 END +\n                    CASE WHEN away_team_id IN (?) THEN away_goals ELSE 0 END\n                ),\n                0\n            )\n            FROM matches\n            WHERE comp_id IN (?)\n            AND (\n                    home_team_id IN (?)\n                    OR\n                    away_team_id IN (?)\n            )\n        ",
+      "params": [
+        4,
+        4,
+        3,
+        4,
+        4
+      ],
+      "execution_result": {
+        "status": "success",
+        "columns": [
+          "COALESCE(\n                SUM(\n                    CASE WHEN home_team_id IN (?) THEN home_goals ELSE 0 END +\n                    CASE WHEN away_team_id IN (?) THEN away_goals ELSE 0 END\n                ),\n                0\n            )"
+        ],
+        "rows": [
+          [
+            99
+          ]
+        ],
+        "row_count": 1,
+        "error": null
+      },
+      "validator_result": {
+        "decision": "OK",
+        "reason": "Query executed successfully and returned expected result shape.",
+        "suggestion": null,
+        "debug": {
+          "query_spec": {
+            "competition_mention": {
+              "abb": "epl",
+              "league_name": null
+            },
+            "competition_context": {
+              "league": "en",
+              "seasons": [
+                "2021-22"
+              ]
+            },
+            "team_mention": {
+              "team_name": "manchester city"
+            },
+            "team_context": {
+              "league": "en"
+            },
+            "query_type": "goals_scored"
+          },
+          "competition_result": {
+            "entity_type": "competition",
+            "decision": "RESOLVED",
+            "confidence": 1.0,
+            "value": [
+              3
+            ],
+            "debug": {
+              "mention": {
+                "abb": "epl",
+                "league_name": null
+              },
+              "context": {
+                "league": "en",
+                "seasons": [
+                  "2021-22"
+                ]
+              }
+            }
+          },
+          "team_result": {
+            "entity_type": "team",
+            "decision": "RESOLVED",
+            "confidence": 0.95,
+            "value": [
+              4
+            ],
+            "debug": {
+              "mention": {
+                "team_name": "manchester city"
+              },
+              "context": {
+                "league": "en"
+              }
+            }
+          },
+          "sql": "\n            SELECT COALESCE(\n                SUM(\n                    CASE WHEN home_team_id IN (?) THEN home_goals ELSE 0 END +\n                    CASE WHEN away_team_id IN (?) THEN away_goals ELSE 0 END\n                ),\n                0\n            )\n            FROM matches\n            WHERE comp_id IN (?)\n            AND (\n                    home_team_id IN (?)\n                    OR\n                    away_team_id IN (?)\n            )\n        ",
+          "params": [
+            4,
+            4,
+            3,
+            4,
+            4
+          ],
+          "execution_result": {
+            "status": "success",
+            "columns": [
+              "COALESCE(\n                SUM(\n                    CASE WHEN home_team_id IN (?) THEN home_goals ELSE 0 END +\n                    CASE WHEN away_team_id IN (?) THEN away_goals ELSE 0 END\n                ),\n                0\n            )"
+            ],
+            "rows": [
+              [
+                99
+              ]
+            ],
+            "row_count": 1,
+            "error": null
+          },
+          "build_error": null
+        }
+      },
+      "message": "Query executed successfully",
+      "query_type": "goals_scored"
+    }
+  },
+  {
+    "id": "c16",
+    "category": "goals_scored_merged_team",
+    "query": "How many goals did Real Sociedad score in LaLiga 2023-24?",
+    "expected_status": "success",
+    "gold_count": null,
+    "baseline_status": "success",
+    "baseline_step": "done",
+    "baseline_value": 0,
+    "baseline_correct": null,
+    "full_status": "success",
+    "full_step": "done",
+    "full_value": 51,
+    "full_correct": null,
+    "comp_confidence": 1.0,
+    "team_confidence": 0.85,
+    "validator_decision": "OK",
+    "sql_spec": {
+      "competition_mention": {
+        "abb": "laliga",
+        "league_name": null
+      },
+      "competition_context": {
+        "league": "es",
+        "seasons": [
+          "2023-24"
+        ]
+      },
+      "team_mention": {
+        "team_name": "real sociedad"
+      },
+      "team_context": {
+        "league": "es"
+      },
+      "query_type": "goals_scored"
+    },
+    "baseline_result": {
+      "mode": "weak_baseline_single_pass",
+      "query": "How many goals did Real Sociedad score in LaLiga 2023-24?",
+      "status": "success",
+      "step": "done",
+      "message": "Weak baseline query executed successfully",
+      "sql_spec": {
+        "competition_mention": {
+          "abb": "laliga",
+          "league_name": null
+        },
+        "competition_context": {
+          "league": "es",
+          "seasons": [
+            "2023-24"
+          ]
+        },
+        "team_mention": {
+          "team_name": "real sociedad"
+        },
+        "team_context": {
+          "league": "es"
+        },
+        "query_type": "goals_scored"
+      },
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "RESOLVED",
+        "value": [
+          11
+        ],
+        "debug": {
+          "mode": "weak_baseline"
+        }
+      },
+      "team_result": {
+        "entity_type": "team",
+        "decision": "RESOLVED",
+        "value": [
+          33
+        ],
+        "debug": {
+          "mode": "weak_baseline"
+        }
+      },
+      "sql": "\n                SELECT COALESCE(\n                    SUM(\n                        CASE WHEN home_team_id IN (?) THEN home_goals ELSE 0 END +\n                        CASE WHEN away_team_id IN (?) THEN away_goals ELSE 0 END\n                    ),\n                    0\n                )\n                FROM matches\n                WHERE comp_id IN (?)\n                AND (\n                        home_team_id IN (?)\n                        OR\n                        away_team_id IN (?)\n                )\n            ",
+      "params": [
+        33,
+        33,
+        11,
+        33,
+        33
+      ],
+      "execution_result": {
+        "status": "success",
+        "columns": [
+          "COALESCE(\n                    SUM(\n                        CASE WHEN home_team_id IN (?) THEN home_goals ELSE 0 END +\n                        CASE WHEN away_team_id IN (?) THEN away_goals ELSE 0 END\n                    ),\n                    0\n                )"
+        ],
+        "rows": [
+          [
+            0
+          ]
+        ],
+        "row_count": 1,
+        "error": null
+      }
+    },
+    "full_result": {
+      "status": "success",
+      "step": "done",
+      "competition_result": {
+        "entity_type": "competition",
+        "decision": "RESOLVED",
+        "confidence": 1.0,
+        "value": [
+          11
+        ],
+        "debug": {
+          "mention": {
+            "abb": "laliga",
+            "league_name": null
+          },
+          "context": {
+            "league": "es",
+            "seasons": [
+              "2023-24"
+            ]
+          }
+        }
+      },
+      "team_result": {
+        "entity_type": "team",
+        "decision": "RESOLVED",
+        "confidence": 0.85,
+        "value": [
+          33,
+          52
+        ],
+        "debug": {
+          "mention": {
+            "team_name": "real sociedad"
+          },
+          "context": {
+            "league": "es"
+          }
+        }
+      },
+      "sql": "\n            SELECT COALESCE(\n                SUM(\n                    CASE WHEN home_team_id IN (?,?) THEN home_goals ELSE 0 END +\n                    CASE WHEN away_team_id IN (?,?) THEN away_goals ELSE 0 END\n                ),\n                0\n            )\n            FROM matches\n            WHERE comp_id IN (?)\n            AND (\n                    home_team_id IN (?,?)\n                    OR\n                    away_team_id IN (?,?)\n            )\n        ",
+      "params": [
+        33,
+        52,
+        33,
+        52,
+        11,
+        33,
+        52,
+        33,
+        52
+      ],
+      "execution_result": {
+        "status": "success",
+        "columns": [
+          "COALESCE(\n                SUM(\n                    CASE WHEN home_team_id IN (?,?) THEN home_goals ELSE 0 END +\n                    CASE WHEN away_team_id IN (?,?) THEN away_goals ELSE 0 END\n                ),\n                0\n            )"
+        ],
+        "rows": [
+          [
+            51
+          ]
+        ],
+        "row_count": 1,
+        "error": null
+      },
+      "validator_result": {
+        "decision": "OK",
+        "reason": "Query executed successfully and returned expected result shape.",
+        "suggestion": null,
+        "debug": {
+          "query_spec": {
+            "competition_mention": {
+              "abb": "laliga",
+              "league_name": null
+            },
+            "competition_context": {
+              "league": "es",
+              "seasons": [
+                "2023-24"
+              ]
+            },
+            "team_mention": {
+              "team_name": "real sociedad"
+            },
+            "team_context": {
+              "league": "es"
+            },
+            "query_type": "goals_scored"
+          },
+          "competition_result": {
+            "entity_type": "competition",
+            "decision": "RESOLVED",
+            "confidence": 1.0,
+            "value": [
+              11
+            ],
+            "debug": {
+              "mention": {
+                "abb": "laliga",
+                "league_name": null
+              },
+              "context": {
+                "league": "es",
+                "seasons": [
+                  "2023-24"
+                ]
+              }
+            }
+          },
+          "team_result": {
+            "entity_type": "team",
+            "decision": "RESOLVED",
+            "confidence": 0.85,
+            "value": [
+              33,
+              52
+            ],
+            "debug": {
+              "mention": {
+                "team_name": "real sociedad"
+              },
+              "context": {
+                "league": "es"
+              }
+            }
+          },
+          "sql": "\n            SELECT COALESCE(\n                SUM(\n                    CASE WHEN home_team_id IN (?,?) THEN home_goals ELSE 0 END +\n                    CASE WHEN away_team_id IN (?,?) THEN away_goals ELSE 0 END\n                ),\n                0\n            )\n            FROM matches\n            WHERE comp_id IN (?)\n            AND (\n                    home_team_id IN (?,?)\n                    OR\n                    away_team_id IN (?,?)\n            )\n        ",
+          "params": [
+            33,
+            52,
+            33,
+            52,
+            11,
+            33,
+            52,
+            33,
+            52
+          ],
+          "execution_result": {
+            "status": "success",
+            "columns": [
+              "COALESCE(\n                SUM(\n                    CASE WHEN home_team_id IN (?,?) THEN home_goals ELSE 0 END +\n                    CASE WHEN away_team_id IN (?,?) THEN away_goals ELSE 0 END\n                ),\n                0\n            )"
+            ],
+            "rows": [
+              [
+                51
+              ]
+            ],
+            "row_count": 1,
+            "error": null
+          },
+          "build_error": null
+        }
+      },
+      "message": "Query executed successfully",
+      "query_type": "goals_scored"
+    }
+  }
+]

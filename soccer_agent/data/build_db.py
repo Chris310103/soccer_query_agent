@@ -1,6 +1,7 @@
 import json
 import sqlite3
 from pathlib import Path
+import re
 
 def create_tables(conn: sqlite3.Connection) -> None:
     cur=conn.cursor()
@@ -8,7 +9,7 @@ def create_tables(conn: sqlite3.Connection) -> None:
     # create table competition(one record represents one season and one league)
     cur.execute("""
                 CREATE TABLE IF NOT EXISTS competitions(
-                comp_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                comp_id INTEGER PRIMARY KEY,
                 league_code TEXT NOT NULL,
                 season TEXT NOT NULL,
                 name TEXT NOT NULL,
@@ -19,14 +20,15 @@ def create_tables(conn: sqlite3.Connection) -> None:
     # create a table teams, the name should be unique 
     cur.execute("""
                 CREATE TABLE IF NOT EXISTS teams(
-                team_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                name TEXT NOT NULL UNIQUE)
+                team_id INTEGER PRIMARY KEY,
+                name TEXT NOT NULL UNIQUE),
+                )
                 ;
                 """)
-    # create a table matches which contains teams, dates, scores.etc
+    # create a table matches which contains teams, dates, scores.et c
     cur.execute("""
                 CREATE TABLE IF NOT EXISTS matches(
-                match_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                match_id INTEGER PRIMARY KEY,
                 comp_id INTEGER NOT NULL,
                 season TEXT NOT NULL,
                 round_name TEXT,
@@ -44,7 +46,7 @@ def create_tables(conn: sqlite3.Connection) -> None:
                 """)
     conn.commit()
 
-def get_or_create_team(cur:sqlite3.Cursor, team_name:str) -> int:
+def get_or_create_team(cur:sqlite3.Cursor, team_name:str, league_code:str, comp_id:int) -> int:
     cur.execute("INSERT OR IGNORE INTO teams(name) VALUES(?)", (team_name,))
     cur.execute("SELECT team_id FROM teams WHERE name = ?", (team_name,))
     return int(cur.fetchone()[0])
@@ -55,15 +57,16 @@ def parse_league_and_season(filename:str) -> tuple[str, str]:
     start_yy, end_yy = short.split("-")
     start_year=2000+int(start_yy)
     season = f"{start_year}-{end_yy}"
-    return league_code, season
+    return league_code, season 
 
 def main():
     # point to the JSON file path
-    f_path=Path("external")
+    pp=Path(__file__).parent
+    f_path=pp.parent.parent/ "external"
     #input file
     fl=sorted(list(f_path.glob("en_*.json"))+list(f_path.glob("es_*.json")))
     #output file
-    out_db=Path("soccer_agent/data/soccer.sqlite")
+    out_db=pp.parent/"data"/"soccer.sqlite3"
     out_db.parent.mkdir(parents=True, exist_ok=True)
 
     conn = sqlite3.connect(out_db)
@@ -89,8 +92,8 @@ def main():
                 round_name = match.get("round")
                 match_date = match.get("date")
                 match_time = match.get("time") or " "
-                home_name = match.get("team1")
-                away_name = match.get("team2") 
+                home_name = re.sub(r'\b(FC|CF|UD)\b'," ",match.get("team1",""),flags=re.IGNORECASE).strip()
+                away_name = re.sub(r'\b(FC|CF|UD)\b'," ",match.get("team2",""),flags=re.IGNORECASE).strip()
 
                 if not home_name or not away_name:
                     continue
@@ -111,7 +114,7 @@ def main():
                 match_count+=1
             print(f"insert {match_count} matches from {f.name}")
 
-        conn.commit()    
+            conn.commit()    
 
         print('db:', out_db.resolve())
 
