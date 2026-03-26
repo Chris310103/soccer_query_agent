@@ -115,10 +115,12 @@ python run_benchmark.py
 
 Benchmark outputs are saved to benchmark_outputs/, including:
 
-benchmark_summary.json
-benchmark_detailed.json
-benchmark_detailed.csv
+- benchmark_summary.json
+- benchmark_detailed.json
+- benchmark_detailed.csv
+
 📂 Project Structure
+``` text
 soccer_agent/
 │
 ├── tools/
@@ -134,19 +136,19 @@ soccer_agent/
     ├── run_benchmark.py
     ├── benchmark_cases.py
     └── benchmark_outputs/
+```
 
 ## ⚠️ Current Limitations
-The parser is still rule-based, so language coverage remains limited.
-The current system supports only a small set of query types.
-The validator can classify problematic outputs, but it does not yet trigger automatic repair or retry.
-The benchmark is still relatively small.
+- The parser is still rule-based, so language coverage remains limited.
+- The current system supports only a small set of query types.
+- The validator can classify problematic outputs, but it does not yet trigger automatic repair or retry.
+- The benchmark is still relatively small.
 
 ## 🔮 Next Steps
-Replace the rule-based parser with an LLM-based parser.
-Expand query coverage and benchmark size.
-Add automatic repair / relax loops after validation.
-Improve support for more complex aggregation queries.
+- Replace the rule-based parser with an LLM-based parser.
+- Expand query coverage and benchmark size.
+- Add automatic repair / relax loops after validation.
+- Improve support for more complex aggregation queries.
 
 ## 🧩 Summary
-
 This project shows that a structured pipeline with entity resolution and validation can outperform a weak single-pass baseline in both correctness and robustness, while also providing more interpretable failure handling.
