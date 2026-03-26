@@ -111,4 +111,32 @@ BENCHMARK_CASES = [
         "expected_status": "success",
         "gold_count": None,
     },
+    {
+        "id": "c17",
+        "query": "How many matches did Atletico Madrid play in LaLiga 2023-24?",
+        "category": "merged_team_match_count_paraphrase",
+        "expected_status": "success",
+        "gold_count": 38,
+    },
+    {
+        "id": "c18",
+        "query": "How many matches did Manchester City play in EPL 2020-21 2021-22?",
+        "category": "multi_season_match_count_epl",
+        "expected_status": "success",
+        "gold_count": 76,
+    },
+    {
+        "id": "c19",
+        "query": "How many matches did Real Sociedad play in LaLiga 2022-23 2023-24?",
+        "category": "merged_team_multi_season_match_count",
+        "expected_status": "success",
+        "gold_count": 76,
+    },
+    {
+        "id": "c20",
+        "query": "How many goals did Manchester City score in EPL?",
+        "category": "goals_scored_missing_season",
+        "expected_status": "error",
+        "gold_count": None,
+    },
 ]

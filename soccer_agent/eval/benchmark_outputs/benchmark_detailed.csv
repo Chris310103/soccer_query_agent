@@ -15,3 +15,7 @@ c13,multi_season_epl,Manchester City home wins in EPL 2020-21 2021-22,success,,e
 c14,missing_season_laliga,Real Sociedad home wins in LaLiga,error,,error,resolve_competition,,,error,validate,,,0.35,0.85,CLARIFY
 c15,goals_scored_single_team,How many goals did Manchester City score in EPL 2021-22?,success,,success,done,99,,success,done,99,,1.0,0.95,OK
 c16,goals_scored_merged_team,How many goals did Real Sociedad score in LaLiga 2023-24?,success,,success,done,0,,success,done,51,,1.0,0.85,OK
+c17,merged_team_match_count_paraphrase,How many matches did Atletico Madrid play in LaLiga 2023-24?,success,38,success,done,0,False,success,done,38,True,1.0,0.85,OK
+c18,multi_season_match_count_epl,How many matches did Manchester City play in EPL 2020-21 2021-22?,success,76,error,resolve_competition,,False,success,done,76,True,1.0,0.95,OK
+c19,merged_team_multi_season_match_count,How many matches did Real Sociedad play in LaLiga 2022-23 2023-24?,success,76,error,resolve_competition,,False,success,done,76,True,1.0,0.85,OK
+c20,goals_scored_missing_season,How many goals did Manchester City score in EPL?,error,,error,resolve_competition,,,error,validate,,,0.35,0.95,CLARIFY
