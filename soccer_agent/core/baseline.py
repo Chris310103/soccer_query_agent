@@ -4,10 +4,11 @@ from typing import Dict, Any, List, Optional
 
 from soccer_agent.tools.resolver import EntityResolver, canonical_key
 from soccer_agent.tools.sql_executor import SQLExecutor
-from soccer_agent.core.query_parser import QueryParser
+from soccer_agent.core.ruled_base_query_parser import Rule_Base_QueryParser
 
 
 def _build_sql(query_type: str, comp_ids: List[int], team_ids: List[int]):
+    
     if query_type == "match_count":
         params = comp_ids + team_ids + team_ids
         placeholder_1 = ",".join(["?"] * len(comp_ids))
@@ -82,7 +83,7 @@ class SinglePassBaseline:
         self.cur = cur
         self.resolver = EntityResolver(cur)
         self.executor = SQLExecutor(cur)
-        self.parser = QueryParser(self.resolver)
+        self.parser = Rule_Base_QueryParser(self.resolver)
 
     def make_result(
         self,

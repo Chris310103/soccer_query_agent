@@ -1,154 +1,202 @@
-# Soccer Query System with Structured Agent Pipeline
+# Soccer Query System with a Structured Agent Pipeline
 
-This project implements a structured soccer analytics query system that is more robust and interpretable than a weak single-pass baseline.
+This project implements a structured soccer analytics query system for answering natural-language questions over a soccer match database.
 
-Instead of mapping a natural-language query directly to SQL in one step, the system uses a modular pipeline with parsing, entity resolution, SQL execution, and validation. This design improves handling of ambiguous inputs, multi-season queries, and teams that appear under multiple internal IDs.
+Instead of mapping a user query directly to SQL in one step, the system uses a controller-based pipeline with explicit stages for parsing, entity resolution, SQL execution, and validation. The project supports both a conservative evaluation setting and a product-oriented confirmation setting.
 
----
+## Supported Query Types
 
-## 🚀 Overview
-
-Pipeline:
-
-`Query -> Parser -> Resolver -> Controller -> SQL Executor -> Validator -> Result`
-
-The current system supports the following query types:
+The current system supports:
 
 - `match_count`
 - `home_wins`
 - `away_wins`
 - `goals_scored`
 
----
+## Core Pipeline
 
-## 🧠 Key Features
+`Query -> Parser -> Controller -> Resolver -> SQL Executor -> Validator`
 
-### 1. Structured Pipeline
-The system decomposes query processing into modular steps:
+## System Variants
 
-- query parsing
-- entity grounding
-- SQL selection and execution
-- result validation
+The project includes four main variants:
 
-This makes the pipeline easier to inspect, debug, and extend than a one-shot baseline.
+- **Weak baseline**: a one-shot SQL-oriented baseline without grouped IDs, multi-season support, or validator-driven clarification
+- **Rule-based full pipeline**: structured parser + controller + resolver + executor + validator
+- **LLM-based full pipeline**: LLM parser with fallback to the rule-based parser
+- **Product-oriented LLM mode**: supports inferred fields with explicit confirmation before execution
 
-### 2. Canonical Entity Resolution (Multi-ID Handling)
-Some teams, such as Real Sociedad and Atletico Madrid, appear under multiple internal IDs in the database.
+## Project Structure
 
-- **Baseline:** uses a single ID and may return incomplete or incorrect results
-- **Full system:** groups matching IDs and aggregates over the full team record
-
-This is one of the main reasons the full pipeline outperforms the weak baseline.
-
-### 3. Multi-Season Support
-The system supports queries involving multiple seasons, for example:
-
-`Real Sociedad home wins in LaLiga 2022-23 2023-24`
-
-The baseline fails on these cases, while the full system resolves the competition across multiple seasons and aggregates correctly.
-
-### 4. Validator for Robustness
-The system includes a validation layer that returns structured decisions:
-
-- `OK` — result is valid
-- `CLARIFY` — query is under-specified
-- `REPAIR` — execution or aggregation issue
-
-This avoids silent failures and makes system behavior easier to interpret.
-
-### 5. Weak Baseline for Comparison
-A weak single-pass baseline is implemented for evaluation.
-
-It does **not** include:
-
-- grouped team IDs
-- multi-season support
-- validator-based decision handling
-
-This provides a simple reference point for measuring the value of the full structured pipeline.
-
----
-
-## 📊 Benchmark Results
-
-Current benchmark summary: **20 cases**, including **7 gold-count cases**.
-
-| System | Success Rate | Expected Status Match | Correctness (Gold Cases) |
-|--------|--------------|-----------------------|--------------------------|
-| Baseline | 55.00% | 80.00% | 28.57% |
-| Full System | 75.00% | 100.00% | 100.00% |
-
-### Key Observations
-
-- The full system outperforms the weak baseline on all three metrics.
-- The largest gains come from grouped team resolution and multi-season support.
-- The validator improves robustness by returning structured outcomes such as `CLARIFY` instead of failing silently.
-- The baseline may still produce an answer in some cases, but that answer is often incomplete or incorrect.
-
----
-
-## 📌 Example
-
-### Query
-`Real Sociedad home wins in LaLiga 2023-24`
-
-### Baseline
-Returns `0` because it resolves only one internal team ID.
-
-### Full System
-Returns `8` by grouping multiple internal IDs for the same real-world team.
-
----
-
-## 🛠️ How to Run
-
-### Run benchmark
-
-From the `eval/` directory:
-
-```bash
-python run_benchmark.py
-```
-
-## Output files
-
-Benchmark outputs are saved to benchmark_outputs/, including:
-
-- benchmark_summary.json
-- benchmark_detailed.json
-- benchmark_detailed.csv
-
-📂 Project Structure
-``` text
+```text
 soccer_agent/
+├── api/
+│   └── app.py
+│
+├── core/
+│   ├── config.py
+│   ├── controller.py
+│   ├── llm_client.py
+│   ├── llm_parser.py
+│   ├── product_orchestrator.py
+│   ├── ruled_base_query_parser.py
+│   ├── spec_checks.py
+│   └── sql_spec.py
 │
 ├── tools/
 │   ├── resolver.py
 │   ├── sql_executor.py
-│   └── result_validator.py
-│
-├── controller.py
-├── query_parser.py
-├── weak_baseline.py
+│   └── validator.py
 │
 └── eval/
-    ├── run_benchmark.py
     ├── benchmark_cases.py
-    └── benchmark_outputs/
+    ├── run_benchmark.py
+    ├── run_product_benchmark.py
+    ├── run_all.py
+    ├── benchmark_outputs/
+    └── product_benchmark_outputs/
+
+soccer-query-ui/
+├── src/
+├── package.json
+└── ...
 ```
 
-## ⚠️ Current Limitations
-- The parser is still rule-based, so language coverage remains limited.
-- The current system supports only a small set of query types.
-- The validator can classify problematic outputs, but it does not yet trigger automatic repair or retry.
-- The benchmark is still relatively small.
+# Set Up
+Create a virtual environment and install dependencies:
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
 
-## 🔮 Next Steps
-- Replace the rule-based parser with an LLM-based parser.
-- Expand query coverage and benchmark size.
-- Add automatic repair / relax loops after validation.
-- Improve support for more complex aggregation queries.
+# Optional Gemini API Key
+The strict benchmark does not require an API key.
 
-## 🧩 Summary
-This project shows that a structured pipeline with entity resolution and validation can outperform a weak single-pass baseline in both correctness and robustness, while also providing more interpretable failure handling.
+To enable the Gemini-powered product benchmark, create a .env file in the project root:
+
+``` bash
+GEMINI_API_KEY=your_key_here
+```
+A .env.example template is included.
+
+# Run Benchmarks
+Run the full evaluation pipeline:
+``` bash
+./run_all.sh
+```
+This behavior is intentional:
+
+- the strict benchmark always runs
+- the product benchmark runs only if a Gemini API key is configured
+- if no key is found, the product benchmark is skipped automatically
+
+You can also run the Python entry point directly:
+```bash
+python3 -m soccer_agent.eval.run_all
+```
+
+# Run the Product UI
+Start the backend API:
+```bash
+source .venv/bin/activate
+uvicorn soccer_agent.api.app:app --reload
+```
+In a separate terminal, start the frontend:
+```bash
+cd soccer-query-ui
+npm install
+npm run dev
+```
+Then open the local Vite URL shown in the terminal, for example:
+
+http://localhost:5173/
+
+You can alse run:
+
+run_ui.sh to run the UI directly
+
+```bash
+chmod +x run_ui.sh
+run_ui.sh
+```
+
+# Benchmarks
+
+## Strict Benchmark
+The strict benchmark evaluates conservative and reliable behavior. Missing critical fields should trigger clarification rather than silent guessing.
+
+Outputs are written to:
+
+soccer_agent/eval/benchmark_outputs/
+
+The strict benchmark evaluates conservative and reliable behavior. Missing critical fields should trigger clarification rather than silent guessing.
+
+Outputs are written to:
+
+soccer_agent/eval/benchmark_outputs/
+
+This benchmark compares:
+
+- baseline
+- rule
+- llm
+- bad_llm
+
+## Product Benchmark
+The product benchmark evaluates assistive behavior. In this setting, the system may infer missing critical fields, but these inferences must be surfaced explicitly and confirmed before execution.
+
+Outputs are written to:
+
+soccer_agent/eval/product_benchmark_outputs/
+
+This benchmark compares:
+
+- rule_product
+- llm_product
+- bad_llm_product
+
+# API Endpoints
+
+The backend currently exposes the following product-oriented endpoints:
+
+- GET /health
+- POST /product/query
+- POST /product/confirm
+
+The intended behavior is:
+
+- complete query -> direct execution
+- inferable missing field -> needs_confirmation
+- confirmed interpretation -> final execution result
+
+# Reproducibility
+The default reproducible path is the strict benchmark. This means the project can still be evaluated without external LLM access.
+
+The product benchmark is an optional enhanced mode that requires Gemini API access.
+
+# Limitations
+The current system is limited to four query types:
+
+- match_count
+- home_wins
+- away_wins
+- goals_scored
+
+The product benchmark and UI depend on external Gemini API access. In addition, the current frontend is a lightweight demo interface rather than a fully polished production UI.
+
+# Summary
+This project delivers a modular soccer query system with:
+
+- structured parsing
+- grounded entity resolution
+- safe SQL execution
+- validator-driven clarification
+- benchmark-based evaluation
+- a confirmation-based product mode for inferred information
+
+The final system supports both conservative evaluation and assistive interaction, making it useful as both an engineering project and a product-style prototype.
+
+
+
+

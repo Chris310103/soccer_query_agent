@@ -1,0 +1,20 @@
+{
+  "parser_mode": "baseline",
+  "total_cases": 40,
+  "gold_cases": 23,
+  "success_rate_num": 19,
+  "success_rate_den": 40,
+  "success_rate": 0.475,
+  "expected_status_match_num": 36,
+  "expected_status_match_den": 40,
+  "expected_status_match": 0.9,
+  "correct_num": 8,
+  "correct_den": 23,
+  "correctness": 0.34782608695652173,
+  "step_breakdown": {
+    "done": 19,
+    "resolve_team": 3,
+    "resolve_competition": 15,
+    "parse_query": 3
+  }
+}

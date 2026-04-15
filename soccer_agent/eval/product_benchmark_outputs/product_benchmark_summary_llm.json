@@ -1,0 +1,25 @@
+{
+  "parser_mode": "llm_product",
+  "total_cases": 40,
+  "gold_cases": 27,
+  "top_status_match_num": 40,
+  "top_status_match_den": 40,
+  "top_status_match": 1.0,
+  "final_status_match_num": 40,
+  "final_status_match_den": 40,
+  "final_status_match": 1.0,
+  "correct_num": 27,
+  "correct_den": 27,
+  "correctness": 1.0,
+  "needs_confirmation_count": 8,
+  "inferred_field_match_num": 8,
+  "inferred_field_match_den": 8,
+  "inferred_field_match": 1.0,
+  "fallback_count": 0,
+  "avg_comp_confidence": 1.0,
+  "avg_team_confidence": 0.8366666666666666,
+  "validator_decision_breakdown": {
+    "OK": 28,
+    "CLARIFY": 12
+  }
+}

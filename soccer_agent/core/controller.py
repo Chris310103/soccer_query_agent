@@ -4,6 +4,8 @@ import sqlite3
 from soccer_agent.tools.resolver import EntityResolver
 from soccer_agent.tools.sql_executor import SQLExecutor
 from soccer_agent.tools.validator import ResultValidator
+from soccer_agent.core.spec_checks import check_execution_readiness
+from soccer_agent.core.sql_spec import SQLSpec
 
 
 def _build_sql(query_type: str, comp_ids: List[int], team_ids: List[int]):
@@ -108,7 +110,27 @@ class SoccerQueryController:
             "query_type": query_type,
         }
 
-    def run(self, sql_spec: Dict[str, Any]):
+    def run(self, sql_spec: SQLSpec):
+        readiness = check_execution_readiness(sql_spec)
+        if not readiness["ready"]:
+            return self.make_result(
+                comp_res=None,
+                team_res=None,
+                sql=None,
+                params=None,
+                query_type=sql_spec.get("query_type"),
+                execution_result=None,
+                validator_result={
+                    "decision": readiness["decision"],
+                    "reason": readiness["reason"],
+                    "missing_fields": readiness["missing_fields"],
+                    "stage": "precheck",
+                },
+                status="error",
+                step="validate",
+                message=readiness["reason"],
+            )
+
         comp_mention = sql_spec.get("competition_mention", {})
         comp_context = sql_spec.get("competition_context", {})
 

@@ -1,0 +1,25 @@
+{
+  "parser_mode": "bad_llm_product",
+  "total_cases": 40,
+  "gold_cases": 27,
+  "top_status_match_num": 32,
+  "top_status_match_den": 40,
+  "top_status_match": 0.8,
+  "final_status_match_num": 35,
+  "final_status_match_den": 40,
+  "final_status_match": 0.875,
+  "correct_num": 23,
+  "correct_den": 27,
+  "correctness": 0.8518518518518519,
+  "needs_confirmation_count": 0,
+  "inferred_field_match_num": 0,
+  "inferred_field_match_den": 8,
+  "inferred_field_match": 0.0,
+  "fallback_count": 40,
+  "avg_comp_confidence": 1.0,
+  "avg_team_confidence": 0.8934782608695653,
+  "validator_decision_breakdown": {
+    "OK": 23,
+    "CLARIFY": 17
+  }
+}
