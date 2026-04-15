@@ -44,7 +44,6 @@ BENCHMARK_CASES = [
         "expected_status": "error",
         "gold_count": None,
 
-        # product-mode expectations
         "product_expected_top_status": "needs_confirmation",
         "product_expected_inferred_fields": ["league"],
         "product_expected_final_status": "success",
