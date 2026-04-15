@@ -6,3 +6,5 @@ node_modules/
 dist/
 .vite/
 *.pdf
+.venv/
+.vscode/
