@@ -156,6 +156,42 @@ This benchmark compares:
 - llm_product
 - bad_llm_product
 
+# Output Files
+
+Benchmark outputs are stored under soccer_agent/eval/.
+
+## Strict Benchmark Outputs
+
+Located in:
+
+soccer_agent/eval/benchmark_outputs/
+
+Typical files include:
+
+- benchmark_summary_baseline.json
+- benchmark_summary_rule.json
+- benchmark_summary_llm.json
+- benchmark_summary_bad_llm.json
+- benchmark_all_long.csv
+- benchmark_comparison.csv
+- benchmark_comparison.json
+- Product Benchmark Outputs
+
+Located in:
+
+soccer_agent/eval/product_benchmark_outputs/
+
+Typical files include:
+
+- product_benchmark_summary_rule.json
+- product_benchmark_summary_llm.json
+- product_benchmark_summary_bad_llm.json
+- product_benchmark_all_long.csv
+- product_benchmark_comparison.csv
+- product_benchmark_comparison.json
+
+These exported files are intended to make the evaluation easier to inspect without digging into the code.
+
 # API Endpoints
 
 The backend currently exposes the following product-oriented endpoints:
